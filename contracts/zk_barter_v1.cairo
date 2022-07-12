@@ -25,6 +25,12 @@ func trade_request_opened(
 ):
 end
 
+@event
+func trade_request_cancelled(
+    id : felt
+):
+end
+
 #
 # Structs
 #
@@ -121,6 +127,22 @@ func open_trade_request{
         token_b_id_high=token_b_id.high
     )
 
+    return()
+end
+
+# Cancels an open trade request
+@external
+func cancel_trade_request{
+    syscall_ptr: felt*,
+    pedersen_ptr: HashBuiltin*,
+    range_check_ptr
+}(trade_request_id : felt) -> ():
+    let (res) = trade_request_statuses.read(trade_request_id=trade_request_id)
+    with_attr error_message("Trade request is not in OPEN status or trade request does not exist"):
+        assert res = StatusEnum.OPEN
+    end
+    trade_request_statuses.write(trade_request_id=trade_request_id, value=StatusEnum.CANCELLED)
+    trade_request_cancelled.emit(id=trade_request_id)
     return()
 end
 
