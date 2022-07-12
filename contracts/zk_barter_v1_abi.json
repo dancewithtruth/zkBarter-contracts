@@ -41,6 +41,37 @@
         "type": "event"
     },
     {
+        "data": [
+            {
+                "name": "id",
+                "type": "felt"
+            },
+            {
+                "name": "token_a_owner",
+                "type": "felt"
+            },
+            {
+                "name": "token_a_address",
+                "type": "felt"
+            },
+            {
+                "name": "token_b_address",
+                "type": "felt"
+            },
+            {
+                "name": "token_a_id",
+                "type": "felt"
+            },
+            {
+                "name": "token_b_id",
+                "type": "felt"
+            }
+        ],
+        "keys": [],
+        "name": "TradeRequestOpened",
+        "type": "event"
+    },
+    {
         "inputs": [
             {
                 "name": "proxy_admin",

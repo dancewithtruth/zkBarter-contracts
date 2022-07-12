@@ -8,6 +8,21 @@ from libraries.Ownable import Ownable
 from libraries.Proxy import Proxy
 
 #
+# Events
+#
+
+@event
+func TradeRequestOpened(
+    id : felt,
+    token_a_owner : felt,
+    token_a_address : felt,
+    token_b_address : felt,
+    token_a_id : felt,
+    token_b_id : felt,
+):
+end
+
+#
 # Structs
 #
 

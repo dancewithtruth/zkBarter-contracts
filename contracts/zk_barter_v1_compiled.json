@@ -42,6 +42,37 @@
             "type": "event"
         },
         {
+            "data": [
+                {
+                    "name": "id",
+                    "type": "felt"
+                },
+                {
+                    "name": "token_a_owner",
+                    "type": "felt"
+                },
+                {
+                    "name": "token_a_address",
+                    "type": "felt"
+                },
+                {
+                    "name": "token_b_address",
+                    "type": "felt"
+                },
+                {
+                    "name": "token_a_id",
+                    "type": "felt"
+                },
+                {
+                    "name": "token_b_id",
+                    "type": "felt"
+                }
+            ],
+            "keys": [],
+            "name": "TradeRequestOpened",
+            "type": "event"
+        },
+        {
             "inputs": [
                 {
                     "name": "proxy_admin",
@@ -7245,7 +7276,7 @@
                     "hints": [],
                     "inst": {
                         "end_col": 24,
-                        "end_line": 50,
+                        "end_line": 65,
                         "input_file": {
                             "filename": "zk_barter_v1.cairo"
                         },
@@ -7259,12 +7290,12 @@
                                 "parent_location": [
                                     {
                                         "end_col": 47,
-                                        "end_line": 54,
+                                        "end_line": 69,
                                         "input_file": {
                                             "filename": "zk_barter_v1.cairo"
                                         },
                                         "start_col": 5,
-                                        "start_line": 54
+                                        "start_line": 69
                                     },
                                     "While trying to retrieve the implicit argument 'syscall_ptr' in:"
                                 ],
@@ -7274,7 +7305,7 @@
                             "While expanding the reference 'syscall_ptr' in:"
                         ],
                         "start_col": 5,
-                        "start_line": 50
+                        "start_line": 65
                     }
                 },
                 "248": {
@@ -7287,7 +7318,7 @@
                     "hints": [],
                     "inst": {
                         "end_col": 32,
-                        "end_line": 51,
+                        "end_line": 66,
                         "input_file": {
                             "filename": "zk_barter_v1.cairo"
                         },
@@ -7301,12 +7332,12 @@
                                 "parent_location": [
                                     {
                                         "end_col": 47,
-                                        "end_line": 54,
+                                        "end_line": 69,
                                         "input_file": {
                                             "filename": "zk_barter_v1.cairo"
                                         },
                                         "start_col": 5,
-                                        "start_line": 54
+                                        "start_line": 69
                                     },
                                     "While trying to retrieve the implicit argument 'pedersen_ptr' in:"
                                 ],
@@ -7316,7 +7347,7 @@
                             "While expanding the reference 'pedersen_ptr' in:"
                         ],
                         "start_col": 5,
-                        "start_line": 51
+                        "start_line": 66
                     }
                 },
                 "249": {
@@ -7329,7 +7360,7 @@
                     "hints": [],
                     "inst": {
                         "end_col": 20,
-                        "end_line": 52,
+                        "end_line": 67,
                         "input_file": {
                             "filename": "zk_barter_v1.cairo"
                         },
@@ -7343,12 +7374,12 @@
                                 "parent_location": [
                                     {
                                         "end_col": 47,
-                                        "end_line": 54,
+                                        "end_line": 69,
                                         "input_file": {
                                             "filename": "zk_barter_v1.cairo"
                                         },
                                         "start_col": 5,
-                                        "start_line": 54
+                                        "start_line": 69
                                     },
                                     "While trying to retrieve the implicit argument 'range_check_ptr' in:"
                                 ],
@@ -7358,7 +7389,7 @@
                             "While expanding the reference 'range_check_ptr' in:"
                         ],
                         "start_col": 5,
-                        "start_line": 52
+                        "start_line": 67
                     }
                 },
                 "250": {
@@ -7371,24 +7402,24 @@
                     "hints": [],
                     "inst": {
                         "end_col": 21,
-                        "end_line": 53,
+                        "end_line": 68,
                         "input_file": {
                             "filename": "zk_barter_v1.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 46,
-                                "end_line": 54,
+                                "end_line": 69,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
                                 "start_col": 35,
-                                "start_line": 54
+                                "start_line": 69
                             },
                             "While expanding the reference 'proxy_admin' in:"
                         ],
                         "start_col": 3,
-                        "start_line": 53
+                        "start_line": 68
                     }
                 },
                 "251": {
@@ -7401,12 +7432,12 @@
                     "hints": [],
                     "inst": {
                         "end_col": 47,
-                        "end_line": 54,
+                        "end_line": 69,
                         "input_file": {
                             "filename": "zk_barter_v1.cairo"
                         },
                         "start_col": 5,
-                        "start_line": 54
+                        "start_line": 69
                     }
                 },
                 "253": {
@@ -7419,12 +7450,12 @@
                     "hints": [],
                     "inst": {
                         "end_col": 14,
-                        "end_line": 55,
+                        "end_line": 70,
                         "input_file": {
                             "filename": "zk_barter_v1.cairo"
                         },
                         "start_col": 5,
-                        "start_line": 55
+                        "start_line": 70
                     }
                 },
                 "254": {
@@ -7445,7 +7476,7 @@
                         "parent_location": [
                             {
                                 "end_col": 21,
-                                "end_line": 53,
+                                "end_line": 68,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
@@ -7459,7 +7490,7 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 17,
-                                                "end_line": 49,
+                                                "end_line": 64,
                                                 "input_file": {
                                                     "filename": "zk_barter_v1.cairo"
                                                 },
@@ -7473,12 +7504,12 @@
                                                         "parent_location": [
                                                             {
                                                                 "end_col": 17,
-                                                                "end_line": 49,
+                                                                "end_line": 64,
                                                                 "input_file": {
                                                                     "filename": "zk_barter_v1.cairo"
                                                                 },
                                                                 "start_col": 6,
-                                                                "start_line": 49
+                                                                "start_line": 64
                                                             },
                                                             "While handling calldata of"
                                                         ],
@@ -7488,7 +7519,7 @@
                                                     "While expanding the reference '__calldata_actual_size' in:"
                                                 ],
                                                 "start_col": 6,
-                                                "start_line": 49
+                                                "start_line": 64
                                             },
                                             "While handling calldata of"
                                         ],
@@ -7498,7 +7529,7 @@
                                     "While expanding the reference '__calldata_ptr' in:"
                                 ],
                                 "start_col": 3,
-                                "start_line": 53
+                                "start_line": 68
                             },
                             "While handling calldata argument 'proxy_admin'"
                         ],
@@ -7524,12 +7555,12 @@
                         "parent_location": [
                             {
                                 "end_col": 17,
-                                "end_line": 49,
+                                "end_line": 64,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
                                 "start_col": 6,
-                                "start_line": 49
+                                "start_line": 64
                             },
                             "While handling calldata of"
                         ],
@@ -7555,7 +7586,7 @@
                         "parent_location": [
                             {
                                 "end_col": 24,
-                                "end_line": 50,
+                                "end_line": 65,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
@@ -7569,12 +7600,12 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 17,
-                                                "end_line": 49,
+                                                "end_line": 64,
                                                 "input_file": {
                                                     "filename": "zk_barter_v1.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 49
+                                                "start_line": 64
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -7584,7 +7615,7 @@
                                     "While expanding the reference 'syscall_ptr' in:"
                                 ],
                                 "start_col": 5,
-                                "start_line": 50
+                                "start_line": 65
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -7610,7 +7641,7 @@
                         "parent_location": [
                             {
                                 "end_col": 32,
-                                "end_line": 51,
+                                "end_line": 66,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
@@ -7624,12 +7655,12 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 17,
-                                                "end_line": 49,
+                                                "end_line": 64,
                                                 "input_file": {
                                                     "filename": "zk_barter_v1.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 49
+                                                "start_line": 64
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -7639,7 +7670,7 @@
                                     "While expanding the reference 'pedersen_ptr' in:"
                                 ],
                                 "start_col": 5,
-                                "start_line": 51
+                                "start_line": 66
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -7665,7 +7696,7 @@
                         "parent_location": [
                             {
                                 "end_col": 20,
-                                "end_line": 52,
+                                "end_line": 67,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
@@ -7679,12 +7710,12 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 17,
-                                                "end_line": 49,
+                                                "end_line": 64,
                                                 "input_file": {
                                                     "filename": "zk_barter_v1.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 49
+                                                "start_line": 64
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -7694,7 +7725,7 @@
                                     "While expanding the reference 'range_check_ptr' in:"
                                 ],
                                 "start_col": 5,
-                                "start_line": 52
+                                "start_line": 67
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -7720,7 +7751,7 @@
                         "parent_location": [
                             {
                                 "end_col": 21,
-                                "end_line": 53,
+                                "end_line": 68,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
@@ -7734,12 +7765,12 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 17,
-                                                "end_line": 49,
+                                                "end_line": 64,
                                                 "input_file": {
                                                     "filename": "zk_barter_v1.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 49
+                                                "start_line": 64
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -7749,7 +7780,7 @@
                                     "While expanding the reference '__calldata_arg_proxy_admin' in:"
                                 ],
                                 "start_col": 3,
-                                "start_line": 53
+                                "start_line": 68
                             },
                             "While handling calldata argument 'proxy_admin'"
                         ],
@@ -7768,12 +7799,12 @@
                     "hints": [],
                     "inst": {
                         "end_col": 17,
-                        "end_line": 49,
+                        "end_line": 64,
                         "input_file": {
                             "filename": "zk_barter_v1.cairo"
                         },
                         "start_col": 6,
-                        "start_line": 49
+                        "start_line": 64
                     }
                 },
                 "263": {
@@ -7795,12 +7826,12 @@
                                 "parent_location": [
                                     {
                                         "end_col": 17,
-                                        "end_line": 49,
+                                        "end_line": 64,
                                         "input_file": {
                                             "filename": "zk_barter_v1.cairo"
                                         },
                                         "start_col": 6,
-                                        "start_line": 49
+                                        "start_line": 64
                                     },
                                     "While constructing the external wrapper for:"
                                 ],
@@ -7819,12 +7850,12 @@
                         "parent_location": [
                             {
                                 "end_col": 17,
-                                "end_line": 49,
+                                "end_line": 64,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
                                 "start_col": 6,
-                                "start_line": 49
+                                "start_line": 64
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -7850,7 +7881,7 @@
                         "parent_location": [
                             {
                                 "end_col": 17,
-                                "end_line": 49,
+                                "end_line": 64,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
@@ -7864,12 +7895,12 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 17,
-                                                "end_line": 49,
+                                                "end_line": 64,
                                                 "input_file": {
                                                     "filename": "zk_barter_v1.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 49
+                                                "start_line": 64
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -7879,7 +7910,7 @@
                                     "While expanding the reference 'syscall_ptr' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 49
+                                "start_line": 64
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -7905,7 +7936,7 @@
                         "parent_location": [
                             {
                                 "end_col": 17,
-                                "end_line": 49,
+                                "end_line": 64,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
@@ -7919,12 +7950,12 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 17,
-                                                "end_line": 49,
+                                                "end_line": 64,
                                                 "input_file": {
                                                     "filename": "zk_barter_v1.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 49
+                                                "start_line": 64
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -7934,7 +7965,7 @@
                                     "While expanding the reference 'pedersen_ptr' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 49
+                                "start_line": 64
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -7960,7 +7991,7 @@
                         "parent_location": [
                             {
                                 "end_col": 17,
-                                "end_line": 49,
+                                "end_line": 64,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
@@ -7974,12 +8005,12 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 17,
-                                                "end_line": 49,
+                                                "end_line": 64,
                                                 "input_file": {
                                                     "filename": "zk_barter_v1.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 49
+                                                "start_line": 64
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -7989,7 +8020,7 @@
                                     "While expanding the reference 'range_check_ptr' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 49
+                                "start_line": 64
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -8015,7 +8046,7 @@
                         "parent_location": [
                             {
                                 "end_col": 17,
-                                "end_line": 49,
+                                "end_line": 64,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
@@ -8029,12 +8060,12 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 17,
-                                                "end_line": 49,
+                                                "end_line": 64,
                                                 "input_file": {
                                                     "filename": "zk_barter_v1.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 49
+                                                "start_line": 64
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -8044,7 +8075,7 @@
                                     "While expanding the reference 'retdata_size' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 49
+                                "start_line": 64
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -8070,7 +8101,7 @@
                         "parent_location": [
                             {
                                 "end_col": 17,
-                                "end_line": 49,
+                                "end_line": 64,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
@@ -8084,12 +8115,12 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 17,
-                                                "end_line": 49,
+                                                "end_line": 64,
                                                 "input_file": {
                                                     "filename": "zk_barter_v1.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 49
+                                                "start_line": 64
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -8099,7 +8130,7 @@
                                     "While expanding the reference 'retdata' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 49
+                                "start_line": 64
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -8125,12 +8156,12 @@
                         "parent_location": [
                             {
                                 "end_col": 17,
-                                "end_line": 49,
+                                "end_line": 64,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
                                 "start_col": 6,
-                                "start_line": 49
+                                "start_line": 64
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -8148,36 +8179,36 @@
                     "hints": [],
                     "inst": {
                         "end_col": 23,
-                        "end_line": 65,
+                        "end_line": 80,
                         "input_file": {
                             "filename": "zk_barter_v1.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 23,
-                                "end_line": 65,
+                                "end_line": 80,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
                                 "parent_location": [
                                     {
                                         "end_col": 13,
-                                        "end_line": 84,
+                                        "end_line": 99,
                                         "input_file": {
                                             "filename": "zk_barter_v1.cairo"
                                         },
                                         "start_col": 5,
-                                        "start_line": 84
+                                        "start_line": 99
                                     },
                                     "While trying to retrieve the implicit argument 'syscall_ptr' in:"
                                 ],
                                 "start_col": 5,
-                                "start_line": 65
+                                "start_line": 80
                             },
                             "While expanding the reference 'syscall_ptr' in:"
                         ],
                         "start_col": 5,
-                        "start_line": 65
+                        "start_line": 80
                     }
                 },
                 "273": {
@@ -8190,36 +8221,36 @@
                     "hints": [],
                     "inst": {
                         "end_col": 31,
-                        "end_line": 66,
+                        "end_line": 81,
                         "input_file": {
                             "filename": "zk_barter_v1.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 31,
-                                "end_line": 66,
+                                "end_line": 81,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
                                 "parent_location": [
                                     {
                                         "end_col": 13,
-                                        "end_line": 84,
+                                        "end_line": 99,
                                         "input_file": {
                                             "filename": "zk_barter_v1.cairo"
                                         },
                                         "start_col": 5,
-                                        "start_line": 84
+                                        "start_line": 99
                                     },
                                     "While trying to retrieve the implicit argument 'pedersen_ptr' in:"
                                 ],
                                 "start_col": 5,
-                                "start_line": 66
+                                "start_line": 81
                             },
                             "While expanding the reference 'pedersen_ptr' in:"
                         ],
                         "start_col": 5,
-                        "start_line": 66
+                        "start_line": 81
                     }
                 },
                 "274": {
@@ -8232,36 +8263,36 @@
                     "hints": [],
                     "inst": {
                         "end_col": 20,
-                        "end_line": 67,
+                        "end_line": 82,
                         "input_file": {
                             "filename": "zk_barter_v1.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 20,
-                                "end_line": 67,
+                                "end_line": 82,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
                                 "parent_location": [
                                     {
                                         "end_col": 13,
-                                        "end_line": 84,
+                                        "end_line": 99,
                                         "input_file": {
                                             "filename": "zk_barter_v1.cairo"
                                         },
                                         "start_col": 5,
-                                        "start_line": 84
+                                        "start_line": 99
                                     },
                                     "While trying to retrieve the implicit argument 'range_check_ptr' in:"
                                 ],
                                 "start_col": 5,
-                                "start_line": 67
+                                "start_line": 82
                             },
                             "While expanding the reference 'range_check_ptr' in:"
                         ],
                         "start_col": 5,
-                        "start_line": 67
+                        "start_line": 82
                     }
                 },
                 "275": {
@@ -8274,12 +8305,12 @@
                     "hints": [],
                     "inst": {
                         "end_col": 13,
-                        "end_line": 84,
+                        "end_line": 99,
                         "input_file": {
                             "filename": "zk_barter_v1.cairo"
                         },
                         "start_col": 5,
-                        "start_line": 84
+                        "start_line": 99
                     }
                 },
                 "276": {
@@ -8300,7 +8331,7 @@
                         "parent_location": [
                             {
                                 "end_col": 22,
-                                "end_line": 72,
+                                "end_line": 87,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
@@ -8314,7 +8345,7 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 24,
-                                                "end_line": 64,
+                                                "end_line": 79,
                                                 "input_file": {
                                                     "filename": "zk_barter_v1.cairo"
                                                 },
@@ -8328,12 +8359,12 @@
                                                         "parent_location": [
                                                             {
                                                                 "end_col": 24,
-                                                                "end_line": 64,
+                                                                "end_line": 79,
                                                                 "input_file": {
                                                                     "filename": "zk_barter_v1.cairo"
                                                                 },
                                                                 "start_col": 6,
-                                                                "start_line": 64
+                                                                "start_line": 79
                                                             },
                                                             "While handling calldata of"
                                                         ],
@@ -8343,7 +8374,7 @@
                                                     "While expanding the reference '__calldata_actual_size' in:"
                                                 ],
                                                 "start_col": 6,
-                                                "start_line": 64
+                                                "start_line": 79
                                             },
                                             "While handling calldata of"
                                         ],
@@ -8353,7 +8384,7 @@
                                     "While expanding the reference '__calldata_ptr' in:"
                                 ],
                                 "start_col": 5,
-                                "start_line": 72
+                                "start_line": 87
                             },
                             "While handling calldata argument 'token_b_id'"
                         ],
@@ -8379,12 +8410,12 @@
                         "parent_location": [
                             {
                                 "end_col": 24,
-                                "end_line": 64,
+                                "end_line": 79,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
                                 "start_col": 6,
-                                "start_line": 64
+                                "start_line": 79
                             },
                             "While handling calldata of"
                         ],
@@ -8410,7 +8441,7 @@
                         "parent_location": [
                             {
                                 "end_col": 23,
-                                "end_line": 65,
+                                "end_line": 80,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
@@ -8424,12 +8455,12 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 24,
-                                                "end_line": 64,
+                                                "end_line": 79,
                                                 "input_file": {
                                                     "filename": "zk_barter_v1.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 64
+                                                "start_line": 79
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -8439,7 +8470,7 @@
                                     "While expanding the reference 'syscall_ptr' in:"
                                 ],
                                 "start_col": 5,
-                                "start_line": 65
+                                "start_line": 80
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -8465,7 +8496,7 @@
                         "parent_location": [
                             {
                                 "end_col": 31,
-                                "end_line": 66,
+                                "end_line": 81,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
@@ -8479,12 +8510,12 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 24,
-                                                "end_line": 64,
+                                                "end_line": 79,
                                                 "input_file": {
                                                     "filename": "zk_barter_v1.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 64
+                                                "start_line": 79
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -8494,7 +8525,7 @@
                                     "While expanding the reference 'pedersen_ptr' in:"
                                 ],
                                 "start_col": 5,
-                                "start_line": 66
+                                "start_line": 81
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -8520,7 +8551,7 @@
                         "parent_location": [
                             {
                                 "end_col": 20,
-                                "end_line": 67,
+                                "end_line": 82,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
@@ -8534,12 +8565,12 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 24,
-                                                "end_line": 64,
+                                                "end_line": 79,
                                                 "input_file": {
                                                     "filename": "zk_barter_v1.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 64
+                                                "start_line": 79
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -8549,7 +8580,7 @@
                                     "While expanding the reference 'range_check_ptr' in:"
                                 ],
                                 "start_col": 5,
-                                "start_line": 67
+                                "start_line": 82
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -8575,7 +8606,7 @@
                         "parent_location": [
                             {
                                 "end_col": 27,
-                                "end_line": 69,
+                                "end_line": 84,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
@@ -8589,12 +8620,12 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 24,
-                                                "end_line": 64,
+                                                "end_line": 79,
                                                 "input_file": {
                                                     "filename": "zk_barter_v1.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 64
+                                                "start_line": 79
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -8604,7 +8635,7 @@
                                     "While expanding the reference '__calldata_arg_token_a_address' in:"
                                 ],
                                 "start_col": 5,
-                                "start_line": 69
+                                "start_line": 84
                             },
                             "While handling calldata argument 'token_a_address'"
                         ],
@@ -8630,7 +8661,7 @@
                         "parent_location": [
                             {
                                 "end_col": 27,
-                                "end_line": 70,
+                                "end_line": 85,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
@@ -8644,12 +8675,12 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 24,
-                                                "end_line": 64,
+                                                "end_line": 79,
                                                 "input_file": {
                                                     "filename": "zk_barter_v1.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 64
+                                                "start_line": 79
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -8659,7 +8690,7 @@
                                     "While expanding the reference '__calldata_arg_token_b_address' in:"
                                 ],
                                 "start_col": 5,
-                                "start_line": 70
+                                "start_line": 85
                             },
                             "While handling calldata argument 'token_b_address'"
                         ],
@@ -8685,7 +8716,7 @@
                         "parent_location": [
                             {
                                 "end_col": 22,
-                                "end_line": 71,
+                                "end_line": 86,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
@@ -8699,12 +8730,12 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 24,
-                                                "end_line": 64,
+                                                "end_line": 79,
                                                 "input_file": {
                                                     "filename": "zk_barter_v1.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 64
+                                                "start_line": 79
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -8714,7 +8745,7 @@
                                     "While expanding the reference '__calldata_arg_token_a_id' in:"
                                 ],
                                 "start_col": 5,
-                                "start_line": 71
+                                "start_line": 86
                             },
                             "While handling calldata argument 'token_a_id'"
                         ],
@@ -8740,7 +8771,7 @@
                         "parent_location": [
                             {
                                 "end_col": 22,
-                                "end_line": 72,
+                                "end_line": 87,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
@@ -8754,12 +8785,12 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 24,
-                                                "end_line": 64,
+                                                "end_line": 79,
                                                 "input_file": {
                                                     "filename": "zk_barter_v1.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 64
+                                                "start_line": 79
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -8769,7 +8800,7 @@
                                     "While expanding the reference '__calldata_arg_token_b_id' in:"
                                 ],
                                 "start_col": 5,
-                                "start_line": 72
+                                "start_line": 87
                             },
                             "While handling calldata argument 'token_b_id'"
                         ],
@@ -8788,12 +8819,12 @@
                     "hints": [],
                     "inst": {
                         "end_col": 24,
-                        "end_line": 64,
+                        "end_line": 79,
                         "input_file": {
                             "filename": "zk_barter_v1.cairo"
                         },
                         "start_col": 6,
-                        "start_line": 64
+                        "start_line": 79
                     }
                 },
                 "288": {
@@ -8815,12 +8846,12 @@
                                 "parent_location": [
                                     {
                                         "end_col": 24,
-                                        "end_line": 64,
+                                        "end_line": 79,
                                         "input_file": {
                                             "filename": "zk_barter_v1.cairo"
                                         },
                                         "start_col": 6,
-                                        "start_line": 64
+                                        "start_line": 79
                                     },
                                     "While constructing the external wrapper for:"
                                 ],
@@ -8839,12 +8870,12 @@
                         "parent_location": [
                             {
                                 "end_col": 24,
-                                "end_line": 64,
+                                "end_line": 79,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
                                 "start_col": 6,
-                                "start_line": 64
+                                "start_line": 79
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -8870,7 +8901,7 @@
                         "parent_location": [
                             {
                                 "end_col": 24,
-                                "end_line": 64,
+                                "end_line": 79,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
@@ -8884,12 +8915,12 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 24,
-                                                "end_line": 64,
+                                                "end_line": 79,
                                                 "input_file": {
                                                     "filename": "zk_barter_v1.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 64
+                                                "start_line": 79
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -8899,7 +8930,7 @@
                                     "While expanding the reference 'syscall_ptr' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 64
+                                "start_line": 79
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -8925,7 +8956,7 @@
                         "parent_location": [
                             {
                                 "end_col": 24,
-                                "end_line": 64,
+                                "end_line": 79,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
@@ -8939,12 +8970,12 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 24,
-                                                "end_line": 64,
+                                                "end_line": 79,
                                                 "input_file": {
                                                     "filename": "zk_barter_v1.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 64
+                                                "start_line": 79
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -8954,7 +8985,7 @@
                                     "While expanding the reference 'pedersen_ptr' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 64
+                                "start_line": 79
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -8980,7 +9011,7 @@
                         "parent_location": [
                             {
                                 "end_col": 24,
-                                "end_line": 64,
+                                "end_line": 79,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
@@ -8994,12 +9025,12 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 24,
-                                                "end_line": 64,
+                                                "end_line": 79,
                                                 "input_file": {
                                                     "filename": "zk_barter_v1.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 64
+                                                "start_line": 79
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -9009,7 +9040,7 @@
                                     "While expanding the reference 'range_check_ptr' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 64
+                                "start_line": 79
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -9035,7 +9066,7 @@
                         "parent_location": [
                             {
                                 "end_col": 24,
-                                "end_line": 64,
+                                "end_line": 79,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
@@ -9049,12 +9080,12 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 24,
-                                                "end_line": 64,
+                                                "end_line": 79,
                                                 "input_file": {
                                                     "filename": "zk_barter_v1.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 64
+                                                "start_line": 79
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -9064,7 +9095,7 @@
                                     "While expanding the reference 'retdata_size' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 64
+                                "start_line": 79
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -9090,7 +9121,7 @@
                         "parent_location": [
                             {
                                 "end_col": 24,
-                                "end_line": 64,
+                                "end_line": 79,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
@@ -9104,12 +9135,12 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 24,
-                                                "end_line": 64,
+                                                "end_line": 79,
                                                 "input_file": {
                                                     "filename": "zk_barter_v1.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 64
+                                                "start_line": 79
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -9119,7 +9150,7 @@
                                     "While expanding the reference 'retdata' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 64
+                                "start_line": 79
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -9145,12 +9176,12 @@
                         "parent_location": [
                             {
                                 "end_col": 24,
-                                "end_line": 64,
+                                "end_line": 79,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
                                 "start_col": 6,
-                                "start_line": 64
+                                "start_line": 79
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -9163,927 +9194,6 @@
                         "__main__",
                         "__main__",
                         "__main__.upgrade"
-                    ],
-                    "flow_tracking_data": null,
-                    "hints": [],
-                    "inst": {
-                        "end_col": 23,
-                        "end_line": 93,
-                        "input_file": {
-                            "filename": "zk_barter_v1.cairo"
-                        },
-                        "parent_location": [
-                            {
-                                "end_col": 31,
-                                "end_line": 64,
-                                "input_file": {
-                                    "filename": "/Users/victorwu/cairo/zkBarter/contracts/libraries/Proxy.cairo"
-                                },
-                                "parent_location": [
-                                    {
-                                        "end_col": 30,
-                                        "end_line": 97,
-                                        "input_file": {
-                                            "filename": "zk_barter_v1.cairo"
-                                        },
-                                        "start_col": 5,
-                                        "start_line": 97
-                                    },
-                                    "While trying to retrieve the implicit argument 'syscall_ptr' in:"
-                                ],
-                                "start_col": 13,
-                                "start_line": 64
-                            },
-                            "While expanding the reference 'syscall_ptr' in:"
-                        ],
-                        "start_col": 5,
-                        "start_line": 93
-                    }
-                },
-                "298": {
-                    "accessible_scopes": [
-                        "__main__",
-                        "__main__",
-                        "__main__.upgrade"
-                    ],
-                    "flow_tracking_data": null,
-                    "hints": [],
-                    "inst": {
-                        "end_col": 31,
-                        "end_line": 94,
-                        "input_file": {
-                            "filename": "zk_barter_v1.cairo"
-                        },
-                        "parent_location": [
-                            {
-                                "end_col": 39,
-                                "end_line": 65,
-                                "input_file": {
-                                    "filename": "/Users/victorwu/cairo/zkBarter/contracts/libraries/Proxy.cairo"
-                                },
-                                "parent_location": [
-                                    {
-                                        "end_col": 30,
-                                        "end_line": 97,
-                                        "input_file": {
-                                            "filename": "zk_barter_v1.cairo"
-                                        },
-                                        "start_col": 5,
-                                        "start_line": 97
-                                    },
-                                    "While trying to retrieve the implicit argument 'pedersen_ptr' in:"
-                                ],
-                                "start_col": 13,
-                                "start_line": 65
-                            },
-                            "While expanding the reference 'pedersen_ptr' in:"
-                        ],
-                        "start_col": 5,
-                        "start_line": 94
-                    }
-                },
-                "299": {
-                    "accessible_scopes": [
-                        "__main__",
-                        "__main__",
-                        "__main__.upgrade"
-                    ],
-                    "flow_tracking_data": null,
-                    "hints": [],
-                    "inst": {
-                        "end_col": 20,
-                        "end_line": 95,
-                        "input_file": {
-                            "filename": "zk_barter_v1.cairo"
-                        },
-                        "parent_location": [
-                            {
-                                "end_col": 28,
-                                "end_line": 66,
-                                "input_file": {
-                                    "filename": "/Users/victorwu/cairo/zkBarter/contracts/libraries/Proxy.cairo"
-                                },
-                                "parent_location": [
-                                    {
-                                        "end_col": 30,
-                                        "end_line": 97,
-                                        "input_file": {
-                                            "filename": "zk_barter_v1.cairo"
-                                        },
-                                        "start_col": 5,
-                                        "start_line": 97
-                                    },
-                                    "While trying to retrieve the implicit argument 'range_check_ptr' in:"
-                                ],
-                                "start_col": 13,
-                                "start_line": 66
-                            },
-                            "While expanding the reference 'range_check_ptr' in:"
-                        ],
-                        "start_col": 5,
-                        "start_line": 95
-                    }
-                },
-                "300": {
-                    "accessible_scopes": [
-                        "__main__",
-                        "__main__",
-                        "__main__.upgrade"
-                    ],
-                    "flow_tracking_data": null,
-                    "hints": [],
-                    "inst": {
-                        "end_col": 30,
-                        "end_line": 97,
-                        "input_file": {
-                            "filename": "zk_barter_v1.cairo"
-                        },
-                        "start_col": 5,
-                        "start_line": 97
-                    }
-                },
-                "302": {
-                    "accessible_scopes": [
-                        "__main__",
-                        "__main__",
-                        "__main__.upgrade"
-                    ],
-                    "flow_tracking_data": null,
-                    "hints": [],
-                    "inst": {
-                        "end_col": 27,
-                        "end_line": 96,
-                        "input_file": {
-                            "filename": "zk_barter_v1.cairo"
-                        },
-                        "parent_location": [
-                            {
-                                "end_col": 54,
-                                "end_line": 98,
-                                "input_file": {
-                                    "filename": "zk_barter_v1.cairo"
-                                },
-                                "start_col": 36,
-                                "start_line": 98
-                            },
-                            "While expanding the reference 'new_implementation' in:"
-                        ],
-                        "start_col": 3,
-                        "start_line": 96
-                    }
-                },
-                "303": {
-                    "accessible_scopes": [
-                        "__main__",
-                        "__main__",
-                        "__main__.upgrade"
-                    ],
-                    "flow_tracking_data": null,
-                    "hints": [],
-                    "inst": {
-                        "end_col": 55,
-                        "end_line": 98,
-                        "input_file": {
-                            "filename": "zk_barter_v1.cairo"
-                        },
-                        "start_col": 5,
-                        "start_line": 98
-                    }
-                },
-                "305": {
-                    "accessible_scopes": [
-                        "__main__",
-                        "__main__",
-                        "__main__.upgrade"
-                    ],
-                    "flow_tracking_data": null,
-                    "hints": [],
-                    "inst": {
-                        "end_col": 14,
-                        "end_line": 99,
-                        "input_file": {
-                            "filename": "zk_barter_v1.cairo"
-                        },
-                        "start_col": 5,
-                        "start_line": 99
-                    }
-                },
-                "306": {
-                    "accessible_scopes": [
-                        "__main__",
-                        "__main__",
-                        "__wrappers__",
-                        "__wrappers__.upgrade"
-                    ],
-                    "flow_tracking_data": null,
-                    "hints": [],
-                    "inst": {
-                        "end_col": 40,
-                        "end_line": 2,
-                        "input_file": {
-                            "filename": "autogen/starknet/arg_processor/58b3781a772ea30e42f38de384e62c51af98506cdd1cd12d8b780fc4816d12a0.cairo"
-                        },
-                        "parent_location": [
-                            {
-                                "end_col": 27,
-                                "end_line": 96,
-                                "input_file": {
-                                    "filename": "zk_barter_v1.cairo"
-                                },
-                                "parent_location": [
-                                    {
-                                        "end_col": 45,
-                                        "end_line": 1,
-                                        "input_file": {
-                                            "filename": "autogen/starknet/arg_processor/5e1cc73f0b484f90bb02da164d88332b40c6f698801aa4d3c603dab22157e902.cairo"
-                                        },
-                                        "parent_location": [
-                                            {
-                                                "end_col": 13,
-                                                "end_line": 92,
-                                                "input_file": {
-                                                    "filename": "zk_barter_v1.cairo"
-                                                },
-                                                "parent_location": [
-                                                    {
-                                                        "end_col": 57,
-                                                        "end_line": 1,
-                                                        "input_file": {
-                                                            "filename": "autogen/starknet/arg_processor/1b562308a65653425ce06491fa4b4539466f3251a07e73e099d0afe86a48900e.cairo"
-                                                        },
-                                                        "parent_location": [
-                                                            {
-                                                                "end_col": 13,
-                                                                "end_line": 92,
-                                                                "input_file": {
-                                                                    "filename": "zk_barter_v1.cairo"
-                                                                },
-                                                                "start_col": 6,
-                                                                "start_line": 92
-                                                            },
-                                                            "While handling calldata of"
-                                                        ],
-                                                        "start_col": 35,
-                                                        "start_line": 1
-                                                    },
-                                                    "While expanding the reference '__calldata_actual_size' in:"
-                                                ],
-                                                "start_col": 6,
-                                                "start_line": 92
-                                            },
-                                            "While handling calldata of"
-                                        ],
-                                        "start_col": 31,
-                                        "start_line": 1
-                                    },
-                                    "While expanding the reference '__calldata_ptr' in:"
-                                ],
-                                "start_col": 3,
-                                "start_line": 96
-                            },
-                            "While handling calldata argument 'new_implementation'"
-                        ],
-                        "start_col": 22,
-                        "start_line": 2
-                    }
-                },
-                "308": {
-                    "accessible_scopes": [
-                        "__main__",
-                        "__main__",
-                        "__wrappers__",
-                        "__wrappers__.upgrade"
-                    ],
-                    "flow_tracking_data": null,
-                    "hints": [],
-                    "inst": {
-                        "end_col": 57,
-                        "end_line": 1,
-                        "input_file": {
-                            "filename": "autogen/starknet/arg_processor/1b562308a65653425ce06491fa4b4539466f3251a07e73e099d0afe86a48900e.cairo"
-                        },
-                        "parent_location": [
-                            {
-                                "end_col": 13,
-                                "end_line": 92,
-                                "input_file": {
-                                    "filename": "zk_barter_v1.cairo"
-                                },
-                                "start_col": 6,
-                                "start_line": 92
-                            },
-                            "While handling calldata of"
-                        ],
-                        "start_col": 1,
-                        "start_line": 1
-                    }
-                },
-                "309": {
-                    "accessible_scopes": [
-                        "__main__",
-                        "__main__",
-                        "__wrappers__",
-                        "__wrappers__.upgrade"
-                    ],
-                    "flow_tracking_data": null,
-                    "hints": [],
-                    "inst": {
-                        "end_col": 64,
-                        "end_line": 1,
-                        "input_file": {
-                            "filename": "autogen/starknet/external/upgrade/c7060df96cb0acca1380ae43bf758cab727bfdf73cb5d34a93e24a9742817fda.cairo"
-                        },
-                        "parent_location": [
-                            {
-                                "end_col": 23,
-                                "end_line": 93,
-                                "input_file": {
-                                    "filename": "zk_barter_v1.cairo"
-                                },
-                                "parent_location": [
-                                    {
-                                        "end_col": 55,
-                                        "end_line": 1,
-                                        "input_file": {
-                                            "filename": "autogen/starknet/external/upgrade/01cf0eb538193ad2725822cc1375c42d175a091c20039abd588f161b164243da.cairo"
-                                        },
-                                        "parent_location": [
-                                            {
-                                                "end_col": 13,
-                                                "end_line": 92,
-                                                "input_file": {
-                                                    "filename": "zk_barter_v1.cairo"
-                                                },
-                                                "start_col": 6,
-                                                "start_line": 92
-                                            },
-                                            "While constructing the external wrapper for:"
-                                        ],
-                                        "start_col": 44,
-                                        "start_line": 1
-                                    },
-                                    "While expanding the reference 'syscall_ptr' in:"
-                                ],
-                                "start_col": 5,
-                                "start_line": 93
-                            },
-                            "While constructing the external wrapper for:"
-                        ],
-                        "start_col": 19,
-                        "start_line": 1
-                    }
-                },
-                "310": {
-                    "accessible_scopes": [
-                        "__main__",
-                        "__main__",
-                        "__wrappers__",
-                        "__wrappers__.upgrade"
-                    ],
-                    "flow_tracking_data": null,
-                    "hints": [],
-                    "inst": {
-                        "end_col": 110,
-                        "end_line": 1,
-                        "input_file": {
-                            "filename": "autogen/starknet/external/upgrade/424b26e79f70343cc02557f1fbd25745138efb26a3dc5c8b593ca765b73138b7.cairo"
-                        },
-                        "parent_location": [
-                            {
-                                "end_col": 31,
-                                "end_line": 94,
-                                "input_file": {
-                                    "filename": "zk_barter_v1.cairo"
-                                },
-                                "parent_location": [
-                                    {
-                                        "end_col": 82,
-                                        "end_line": 1,
-                                        "input_file": {
-                                            "filename": "autogen/starknet/external/upgrade/01cf0eb538193ad2725822cc1375c42d175a091c20039abd588f161b164243da.cairo"
-                                        },
-                                        "parent_location": [
-                                            {
-                                                "end_col": 13,
-                                                "end_line": 92,
-                                                "input_file": {
-                                                    "filename": "zk_barter_v1.cairo"
-                                                },
-                                                "start_col": 6,
-                                                "start_line": 92
-                                            },
-                                            "While constructing the external wrapper for:"
-                                        ],
-                                        "start_col": 70,
-                                        "start_line": 1
-                                    },
-                                    "While expanding the reference 'pedersen_ptr' in:"
-                                ],
-                                "start_col": 5,
-                                "start_line": 94
-                            },
-                            "While constructing the external wrapper for:"
-                        ],
-                        "start_col": 20,
-                        "start_line": 1
-                    }
-                },
-                "311": {
-                    "accessible_scopes": [
-                        "__main__",
-                        "__main__",
-                        "__wrappers__",
-                        "__wrappers__.upgrade"
-                    ],
-                    "flow_tracking_data": null,
-                    "hints": [],
-                    "inst": {
-                        "end_col": 67,
-                        "end_line": 1,
-                        "input_file": {
-                            "filename": "autogen/starknet/external/upgrade/e651458745e7cd218121c342e0915890767e2f59ddc2e315b8844ad0f47d582e.cairo"
-                        },
-                        "parent_location": [
-                            {
-                                "end_col": 20,
-                                "end_line": 95,
-                                "input_file": {
-                                    "filename": "zk_barter_v1.cairo"
-                                },
-                                "parent_location": [
-                                    {
-                                        "end_col": 115,
-                                        "end_line": 1,
-                                        "input_file": {
-                                            "filename": "autogen/starknet/external/upgrade/01cf0eb538193ad2725822cc1375c42d175a091c20039abd588f161b164243da.cairo"
-                                        },
-                                        "parent_location": [
-                                            {
-                                                "end_col": 13,
-                                                "end_line": 92,
-                                                "input_file": {
-                                                    "filename": "zk_barter_v1.cairo"
-                                                },
-                                                "start_col": 6,
-                                                "start_line": 92
-                                            },
-                                            "While constructing the external wrapper for:"
-                                        ],
-                                        "start_col": 100,
-                                        "start_line": 1
-                                    },
-                                    "While expanding the reference 'range_check_ptr' in:"
-                                ],
-                                "start_col": 5,
-                                "start_line": 95
-                            },
-                            "While constructing the external wrapper for:"
-                        ],
-                        "start_col": 23,
-                        "start_line": 1
-                    }
-                },
-                "312": {
-                    "accessible_scopes": [
-                        "__main__",
-                        "__main__",
-                        "__wrappers__",
-                        "__wrappers__.upgrade"
-                    ],
-                    "flow_tracking_data": null,
-                    "hints": [],
-                    "inst": {
-                        "end_col": 57,
-                        "end_line": 1,
-                        "input_file": {
-                            "filename": "autogen/starknet/arg_processor/58b3781a772ea30e42f38de384e62c51af98506cdd1cd12d8b780fc4816d12a0.cairo"
-                        },
-                        "parent_location": [
-                            {
-                                "end_col": 27,
-                                "end_line": 96,
-                                "input_file": {
-                                    "filename": "zk_barter_v1.cairo"
-                                },
-                                "parent_location": [
-                                    {
-                                        "end_col": 169,
-                                        "end_line": 1,
-                                        "input_file": {
-                                            "filename": "autogen/starknet/external/upgrade/01cf0eb538193ad2725822cc1375c42d175a091c20039abd588f161b164243da.cairo"
-                                        },
-                                        "parent_location": [
-                                            {
-                                                "end_col": 13,
-                                                "end_line": 92,
-                                                "input_file": {
-                                                    "filename": "zk_barter_v1.cairo"
-                                                },
-                                                "start_col": 6,
-                                                "start_line": 92
-                                            },
-                                            "While constructing the external wrapper for:"
-                                        ],
-                                        "start_col": 136,
-                                        "start_line": 1
-                                    },
-                                    "While expanding the reference '__calldata_arg_new_implementation' in:"
-                                ],
-                                "start_col": 3,
-                                "start_line": 96
-                            },
-                            "While handling calldata argument 'new_implementation'"
-                        ],
-                        "start_col": 41,
-                        "start_line": 1
-                    }
-                },
-                "313": {
-                    "accessible_scopes": [
-                        "__main__",
-                        "__main__",
-                        "__wrappers__",
-                        "__wrappers__.upgrade"
-                    ],
-                    "flow_tracking_data": null,
-                    "hints": [],
-                    "inst": {
-                        "end_col": 13,
-                        "end_line": 92,
-                        "input_file": {
-                            "filename": "zk_barter_v1.cairo"
-                        },
-                        "start_col": 6,
-                        "start_line": 92
-                    }
-                },
-                "315": {
-                    "accessible_scopes": [
-                        "__main__",
-                        "__main__",
-                        "__wrappers__",
-                        "__wrappers__.upgrade"
-                    ],
-                    "flow_tracking_data": null,
-                    "hints": [
-                        {
-                            "location": {
-                                "end_col": 34,
-                                "end_line": 2,
-                                "input_file": {
-                                    "filename": "autogen/starknet/external/upgrade/01cf0eb538193ad2725822cc1375c42d175a091c20039abd588f161b164243da.cairo"
-                                },
-                                "parent_location": [
-                                    {
-                                        "end_col": 13,
-                                        "end_line": 92,
-                                        "input_file": {
-                                            "filename": "zk_barter_v1.cairo"
-                                        },
-                                        "start_col": 6,
-                                        "start_line": 92
-                                    },
-                                    "While constructing the external wrapper for:"
-                                ],
-                                "start_col": 1,
-                                "start_line": 2
-                            },
-                            "n_prefix_newlines": 0
-                        }
-                    ],
-                    "inst": {
-                        "end_col": 24,
-                        "end_line": 3,
-                        "input_file": {
-                            "filename": "autogen/starknet/external/upgrade/01cf0eb538193ad2725822cc1375c42d175a091c20039abd588f161b164243da.cairo"
-                        },
-                        "parent_location": [
-                            {
-                                "end_col": 13,
-                                "end_line": 92,
-                                "input_file": {
-                                    "filename": "zk_barter_v1.cairo"
-                                },
-                                "start_col": 6,
-                                "start_line": 92
-                            },
-                            "While constructing the external wrapper for:"
-                        ],
-                        "start_col": 1,
-                        "start_line": 3
-                    }
-                },
-                "317": {
-                    "accessible_scopes": [
-                        "__main__",
-                        "__main__",
-                        "__wrappers__",
-                        "__wrappers__.upgrade"
-                    ],
-                    "flow_tracking_data": null,
-                    "hints": [],
-                    "inst": {
-                        "end_col": 55,
-                        "end_line": 1,
-                        "input_file": {
-                            "filename": "autogen/starknet/external/upgrade/01cf0eb538193ad2725822cc1375c42d175a091c20039abd588f161b164243da.cairo"
-                        },
-                        "parent_location": [
-                            {
-                                "end_col": 13,
-                                "end_line": 92,
-                                "input_file": {
-                                    "filename": "zk_barter_v1.cairo"
-                                },
-                                "parent_location": [
-                                    {
-                                        "end_col": 20,
-                                        "end_line": 1,
-                                        "input_file": {
-                                            "filename": "autogen/starknet/external/upgrade/4ba2b119ceb30fe10f4cca3c9d73ef620c0fb5eece91b99a99d71217bba1001c.cairo"
-                                        },
-                                        "parent_location": [
-                                            {
-                                                "end_col": 13,
-                                                "end_line": 92,
-                                                "input_file": {
-                                                    "filename": "zk_barter_v1.cairo"
-                                                },
-                                                "start_col": 6,
-                                                "start_line": 92
-                                            },
-                                            "While constructing the external wrapper for:"
-                                        ],
-                                        "start_col": 9,
-                                        "start_line": 1
-                                    },
-                                    "While expanding the reference 'syscall_ptr' in:"
-                                ],
-                                "start_col": 6,
-                                "start_line": 92
-                            },
-                            "While constructing the external wrapper for:"
-                        ],
-                        "start_col": 44,
-                        "start_line": 1
-                    }
-                },
-                "318": {
-                    "accessible_scopes": [
-                        "__main__",
-                        "__main__",
-                        "__wrappers__",
-                        "__wrappers__.upgrade"
-                    ],
-                    "flow_tracking_data": null,
-                    "hints": [],
-                    "inst": {
-                        "end_col": 82,
-                        "end_line": 1,
-                        "input_file": {
-                            "filename": "autogen/starknet/external/upgrade/01cf0eb538193ad2725822cc1375c42d175a091c20039abd588f161b164243da.cairo"
-                        },
-                        "parent_location": [
-                            {
-                                "end_col": 13,
-                                "end_line": 92,
-                                "input_file": {
-                                    "filename": "zk_barter_v1.cairo"
-                                },
-                                "parent_location": [
-                                    {
-                                        "end_col": 33,
-                                        "end_line": 1,
-                                        "input_file": {
-                                            "filename": "autogen/starknet/external/upgrade/4ba2b119ceb30fe10f4cca3c9d73ef620c0fb5eece91b99a99d71217bba1001c.cairo"
-                                        },
-                                        "parent_location": [
-                                            {
-                                                "end_col": 13,
-                                                "end_line": 92,
-                                                "input_file": {
-                                                    "filename": "zk_barter_v1.cairo"
-                                                },
-                                                "start_col": 6,
-                                                "start_line": 92
-                                            },
-                                            "While constructing the external wrapper for:"
-                                        ],
-                                        "start_col": 21,
-                                        "start_line": 1
-                                    },
-                                    "While expanding the reference 'pedersen_ptr' in:"
-                                ],
-                                "start_col": 6,
-                                "start_line": 92
-                            },
-                            "While constructing the external wrapper for:"
-                        ],
-                        "start_col": 70,
-                        "start_line": 1
-                    }
-                },
-                "319": {
-                    "accessible_scopes": [
-                        "__main__",
-                        "__main__",
-                        "__wrappers__",
-                        "__wrappers__.upgrade"
-                    ],
-                    "flow_tracking_data": null,
-                    "hints": [],
-                    "inst": {
-                        "end_col": 115,
-                        "end_line": 1,
-                        "input_file": {
-                            "filename": "autogen/starknet/external/upgrade/01cf0eb538193ad2725822cc1375c42d175a091c20039abd588f161b164243da.cairo"
-                        },
-                        "parent_location": [
-                            {
-                                "end_col": 13,
-                                "end_line": 92,
-                                "input_file": {
-                                    "filename": "zk_barter_v1.cairo"
-                                },
-                                "parent_location": [
-                                    {
-                                        "end_col": 49,
-                                        "end_line": 1,
-                                        "input_file": {
-                                            "filename": "autogen/starknet/external/upgrade/4ba2b119ceb30fe10f4cca3c9d73ef620c0fb5eece91b99a99d71217bba1001c.cairo"
-                                        },
-                                        "parent_location": [
-                                            {
-                                                "end_col": 13,
-                                                "end_line": 92,
-                                                "input_file": {
-                                                    "filename": "zk_barter_v1.cairo"
-                                                },
-                                                "start_col": 6,
-                                                "start_line": 92
-                                            },
-                                            "While constructing the external wrapper for:"
-                                        ],
-                                        "start_col": 34,
-                                        "start_line": 1
-                                    },
-                                    "While expanding the reference 'range_check_ptr' in:"
-                                ],
-                                "start_col": 6,
-                                "start_line": 92
-                            },
-                            "While constructing the external wrapper for:"
-                        ],
-                        "start_col": 100,
-                        "start_line": 1
-                    }
-                },
-                "320": {
-                    "accessible_scopes": [
-                        "__main__",
-                        "__main__",
-                        "__wrappers__",
-                        "__wrappers__.upgrade"
-                    ],
-                    "flow_tracking_data": null,
-                    "hints": [],
-                    "inst": {
-                        "end_col": 21,
-                        "end_line": 4,
-                        "input_file": {
-                            "filename": "autogen/starknet/external/upgrade/01cf0eb538193ad2725822cc1375c42d175a091c20039abd588f161b164243da.cairo"
-                        },
-                        "parent_location": [
-                            {
-                                "end_col": 13,
-                                "end_line": 92,
-                                "input_file": {
-                                    "filename": "zk_barter_v1.cairo"
-                                },
-                                "parent_location": [
-                                    {
-                                        "end_col": 62,
-                                        "end_line": 1,
-                                        "input_file": {
-                                            "filename": "autogen/starknet/external/upgrade/4ba2b119ceb30fe10f4cca3c9d73ef620c0fb5eece91b99a99d71217bba1001c.cairo"
-                                        },
-                                        "parent_location": [
-                                            {
-                                                "end_col": 13,
-                                                "end_line": 92,
-                                                "input_file": {
-                                                    "filename": "zk_barter_v1.cairo"
-                                                },
-                                                "start_col": 6,
-                                                "start_line": 92
-                                            },
-                                            "While constructing the external wrapper for:"
-                                        ],
-                                        "start_col": 50,
-                                        "start_line": 1
-                                    },
-                                    "While expanding the reference 'retdata_size' in:"
-                                ],
-                                "start_col": 6,
-                                "start_line": 92
-                            },
-                            "While constructing the external wrapper for:"
-                        ],
-                        "start_col": 20,
-                        "start_line": 4
-                    }
-                },
-                "322": {
-                    "accessible_scopes": [
-                        "__main__",
-                        "__main__",
-                        "__wrappers__",
-                        "__wrappers__.upgrade"
-                    ],
-                    "flow_tracking_data": null,
-                    "hints": [],
-                    "inst": {
-                        "end_col": 16,
-                        "end_line": 3,
-                        "input_file": {
-                            "filename": "autogen/starknet/external/upgrade/01cf0eb538193ad2725822cc1375c42d175a091c20039abd588f161b164243da.cairo"
-                        },
-                        "parent_location": [
-                            {
-                                "end_col": 13,
-                                "end_line": 92,
-                                "input_file": {
-                                    "filename": "zk_barter_v1.cairo"
-                                },
-                                "parent_location": [
-                                    {
-                                        "end_col": 70,
-                                        "end_line": 1,
-                                        "input_file": {
-                                            "filename": "autogen/starknet/external/upgrade/4ba2b119ceb30fe10f4cca3c9d73ef620c0fb5eece91b99a99d71217bba1001c.cairo"
-                                        },
-                                        "parent_location": [
-                                            {
-                                                "end_col": 13,
-                                                "end_line": 92,
-                                                "input_file": {
-                                                    "filename": "zk_barter_v1.cairo"
-                                                },
-                                                "start_col": 6,
-                                                "start_line": 92
-                                            },
-                                            "While constructing the external wrapper for:"
-                                        ],
-                                        "start_col": 63,
-                                        "start_line": 1
-                                    },
-                                    "While expanding the reference 'retdata' in:"
-                                ],
-                                "start_col": 6,
-                                "start_line": 92
-                            },
-                            "While constructing the external wrapper for:"
-                        ],
-                        "start_col": 9,
-                        "start_line": 3
-                    }
-                },
-                "323": {
-                    "accessible_scopes": [
-                        "__main__",
-                        "__main__",
-                        "__wrappers__",
-                        "__wrappers__.upgrade"
-                    ],
-                    "flow_tracking_data": null,
-                    "hints": [],
-                    "inst": {
-                        "end_col": 71,
-                        "end_line": 1,
-                        "input_file": {
-                            "filename": "autogen/starknet/external/upgrade/4ba2b119ceb30fe10f4cca3c9d73ef620c0fb5eece91b99a99d71217bba1001c.cairo"
-                        },
-                        "parent_location": [
-                            {
-                                "end_col": 13,
-                                "end_line": 92,
-                                "input_file": {
-                                    "filename": "zk_barter_v1.cairo"
-                                },
-                                "start_col": 6,
-                                "start_line": 92
-                            },
-                            "While constructing the external wrapper for:"
-                        ],
-                        "start_col": 1,
-                        "start_line": 1
-                    }
-                },
-                "324": {
-                    "accessible_scopes": [
-                        "__main__",
-                        "__main__",
-                        "__main__.set_admin"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -10121,11 +9231,11 @@
                         "start_line": 108
                     }
                 },
-                "325": {
+                "298": {
                     "accessible_scopes": [
                         "__main__",
                         "__main__",
-                        "__main__.set_admin"
+                        "__main__.upgrade"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -10163,11 +9273,11 @@
                         "start_line": 109
                     }
                 },
-                "326": {
+                "299": {
                     "accessible_scopes": [
                         "__main__",
                         "__main__",
-                        "__main__.set_admin"
+                        "__main__.upgrade"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -10205,11 +9315,11 @@
                         "start_line": 110
                     }
                 },
-                "327": {
+                "300": {
                     "accessible_scopes": [
                         "__main__",
                         "__main__",
-                        "__main__.set_admin"
+                        "__main__.upgrade"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -10223,46 +9333,46 @@
                         "start_line": 112
                     }
                 },
-                "329": {
+                "302": {
                     "accessible_scopes": [
                         "__main__",
                         "__main__",
-                        "__main__.set_admin"
+                        "__main__.upgrade"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 19,
+                        "end_col": 27,
                         "end_line": 111,
                         "input_file": {
                             "filename": "zk_barter_v1.cairo"
                         },
                         "parent_location": [
                             {
-                                "end_col": 41,
+                                "end_col": 54,
                                 "end_line": 113,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
-                                "start_col": 32,
+                                "start_col": 36,
                                 "start_line": 113
                             },
-                            "While expanding the reference 'new_admin' in:"
+                            "While expanding the reference 'new_implementation' in:"
                         ],
                         "start_col": 3,
                         "start_line": 111
                     }
                 },
-                "330": {
+                "303": {
                     "accessible_scopes": [
                         "__main__",
                         "__main__",
-                        "__main__.set_admin"
+                        "__main__.upgrade"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 42,
+                        "end_col": 55,
                         "end_line": 113,
                         "input_file": {
                             "filename": "zk_barter_v1.cairo"
@@ -10271,16 +9381,16 @@
                         "start_line": 113
                     }
                 },
-                "332": {
+                "305": {
                     "accessible_scopes": [
                         "__main__",
                         "__main__",
-                        "__main__.set_admin"
+                        "__main__.upgrade"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 13,
+                        "end_col": 14,
                         "end_line": 114,
                         "input_file": {
                             "filename": "zk_barter_v1.cairo"
@@ -10289,12 +9399,12 @@
                         "start_line": 114
                     }
                 },
-                "333": {
+                "306": {
                     "accessible_scopes": [
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.set_admin"
+                        "__wrappers__.upgrade"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -10302,11 +9412,11 @@
                         "end_col": 40,
                         "end_line": 2,
                         "input_file": {
-                            "filename": "autogen/starknet/arg_processor/6ec556b31d9c211d68293c75604d777ca365755e18089820ae024f49713ec319.cairo"
+                            "filename": "autogen/starknet/arg_processor/58b3781a772ea30e42f38de384e62c51af98506cdd1cd12d8b780fc4816d12a0.cairo"
                         },
                         "parent_location": [
                             {
-                                "end_col": 19,
+                                "end_col": 27,
                                 "end_line": 111,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
@@ -10320,7 +9430,7 @@
                                         },
                                         "parent_location": [
                                             {
-                                                "end_col": 15,
+                                                "end_col": 13,
                                                 "end_line": 107,
                                                 "input_file": {
                                                     "filename": "zk_barter_v1.cairo"
@@ -10334,7 +9444,7 @@
                                                         },
                                                         "parent_location": [
                                                             {
-                                                                "end_col": 15,
+                                                                "end_col": 13,
                                                                 "end_line": 107,
                                                                 "input_file": {
                                                                     "filename": "zk_barter_v1.cairo"
@@ -10362,6 +9472,927 @@
                                 "start_col": 3,
                                 "start_line": 111
                             },
+                            "While handling calldata argument 'new_implementation'"
+                        ],
+                        "start_col": 22,
+                        "start_line": 2
+                    }
+                },
+                "308": {
+                    "accessible_scopes": [
+                        "__main__",
+                        "__main__",
+                        "__wrappers__",
+                        "__wrappers__.upgrade"
+                    ],
+                    "flow_tracking_data": null,
+                    "hints": [],
+                    "inst": {
+                        "end_col": 57,
+                        "end_line": 1,
+                        "input_file": {
+                            "filename": "autogen/starknet/arg_processor/1b562308a65653425ce06491fa4b4539466f3251a07e73e099d0afe86a48900e.cairo"
+                        },
+                        "parent_location": [
+                            {
+                                "end_col": 13,
+                                "end_line": 107,
+                                "input_file": {
+                                    "filename": "zk_barter_v1.cairo"
+                                },
+                                "start_col": 6,
+                                "start_line": 107
+                            },
+                            "While handling calldata of"
+                        ],
+                        "start_col": 1,
+                        "start_line": 1
+                    }
+                },
+                "309": {
+                    "accessible_scopes": [
+                        "__main__",
+                        "__main__",
+                        "__wrappers__",
+                        "__wrappers__.upgrade"
+                    ],
+                    "flow_tracking_data": null,
+                    "hints": [],
+                    "inst": {
+                        "end_col": 64,
+                        "end_line": 1,
+                        "input_file": {
+                            "filename": "autogen/starknet/external/upgrade/c7060df96cb0acca1380ae43bf758cab727bfdf73cb5d34a93e24a9742817fda.cairo"
+                        },
+                        "parent_location": [
+                            {
+                                "end_col": 23,
+                                "end_line": 108,
+                                "input_file": {
+                                    "filename": "zk_barter_v1.cairo"
+                                },
+                                "parent_location": [
+                                    {
+                                        "end_col": 55,
+                                        "end_line": 1,
+                                        "input_file": {
+                                            "filename": "autogen/starknet/external/upgrade/01cf0eb538193ad2725822cc1375c42d175a091c20039abd588f161b164243da.cairo"
+                                        },
+                                        "parent_location": [
+                                            {
+                                                "end_col": 13,
+                                                "end_line": 107,
+                                                "input_file": {
+                                                    "filename": "zk_barter_v1.cairo"
+                                                },
+                                                "start_col": 6,
+                                                "start_line": 107
+                                            },
+                                            "While constructing the external wrapper for:"
+                                        ],
+                                        "start_col": 44,
+                                        "start_line": 1
+                                    },
+                                    "While expanding the reference 'syscall_ptr' in:"
+                                ],
+                                "start_col": 5,
+                                "start_line": 108
+                            },
+                            "While constructing the external wrapper for:"
+                        ],
+                        "start_col": 19,
+                        "start_line": 1
+                    }
+                },
+                "310": {
+                    "accessible_scopes": [
+                        "__main__",
+                        "__main__",
+                        "__wrappers__",
+                        "__wrappers__.upgrade"
+                    ],
+                    "flow_tracking_data": null,
+                    "hints": [],
+                    "inst": {
+                        "end_col": 110,
+                        "end_line": 1,
+                        "input_file": {
+                            "filename": "autogen/starknet/external/upgrade/424b26e79f70343cc02557f1fbd25745138efb26a3dc5c8b593ca765b73138b7.cairo"
+                        },
+                        "parent_location": [
+                            {
+                                "end_col": 31,
+                                "end_line": 109,
+                                "input_file": {
+                                    "filename": "zk_barter_v1.cairo"
+                                },
+                                "parent_location": [
+                                    {
+                                        "end_col": 82,
+                                        "end_line": 1,
+                                        "input_file": {
+                                            "filename": "autogen/starknet/external/upgrade/01cf0eb538193ad2725822cc1375c42d175a091c20039abd588f161b164243da.cairo"
+                                        },
+                                        "parent_location": [
+                                            {
+                                                "end_col": 13,
+                                                "end_line": 107,
+                                                "input_file": {
+                                                    "filename": "zk_barter_v1.cairo"
+                                                },
+                                                "start_col": 6,
+                                                "start_line": 107
+                                            },
+                                            "While constructing the external wrapper for:"
+                                        ],
+                                        "start_col": 70,
+                                        "start_line": 1
+                                    },
+                                    "While expanding the reference 'pedersen_ptr' in:"
+                                ],
+                                "start_col": 5,
+                                "start_line": 109
+                            },
+                            "While constructing the external wrapper for:"
+                        ],
+                        "start_col": 20,
+                        "start_line": 1
+                    }
+                },
+                "311": {
+                    "accessible_scopes": [
+                        "__main__",
+                        "__main__",
+                        "__wrappers__",
+                        "__wrappers__.upgrade"
+                    ],
+                    "flow_tracking_data": null,
+                    "hints": [],
+                    "inst": {
+                        "end_col": 67,
+                        "end_line": 1,
+                        "input_file": {
+                            "filename": "autogen/starknet/external/upgrade/e651458745e7cd218121c342e0915890767e2f59ddc2e315b8844ad0f47d582e.cairo"
+                        },
+                        "parent_location": [
+                            {
+                                "end_col": 20,
+                                "end_line": 110,
+                                "input_file": {
+                                    "filename": "zk_barter_v1.cairo"
+                                },
+                                "parent_location": [
+                                    {
+                                        "end_col": 115,
+                                        "end_line": 1,
+                                        "input_file": {
+                                            "filename": "autogen/starknet/external/upgrade/01cf0eb538193ad2725822cc1375c42d175a091c20039abd588f161b164243da.cairo"
+                                        },
+                                        "parent_location": [
+                                            {
+                                                "end_col": 13,
+                                                "end_line": 107,
+                                                "input_file": {
+                                                    "filename": "zk_barter_v1.cairo"
+                                                },
+                                                "start_col": 6,
+                                                "start_line": 107
+                                            },
+                                            "While constructing the external wrapper for:"
+                                        ],
+                                        "start_col": 100,
+                                        "start_line": 1
+                                    },
+                                    "While expanding the reference 'range_check_ptr' in:"
+                                ],
+                                "start_col": 5,
+                                "start_line": 110
+                            },
+                            "While constructing the external wrapper for:"
+                        ],
+                        "start_col": 23,
+                        "start_line": 1
+                    }
+                },
+                "312": {
+                    "accessible_scopes": [
+                        "__main__",
+                        "__main__",
+                        "__wrappers__",
+                        "__wrappers__.upgrade"
+                    ],
+                    "flow_tracking_data": null,
+                    "hints": [],
+                    "inst": {
+                        "end_col": 57,
+                        "end_line": 1,
+                        "input_file": {
+                            "filename": "autogen/starknet/arg_processor/58b3781a772ea30e42f38de384e62c51af98506cdd1cd12d8b780fc4816d12a0.cairo"
+                        },
+                        "parent_location": [
+                            {
+                                "end_col": 27,
+                                "end_line": 111,
+                                "input_file": {
+                                    "filename": "zk_barter_v1.cairo"
+                                },
+                                "parent_location": [
+                                    {
+                                        "end_col": 169,
+                                        "end_line": 1,
+                                        "input_file": {
+                                            "filename": "autogen/starknet/external/upgrade/01cf0eb538193ad2725822cc1375c42d175a091c20039abd588f161b164243da.cairo"
+                                        },
+                                        "parent_location": [
+                                            {
+                                                "end_col": 13,
+                                                "end_line": 107,
+                                                "input_file": {
+                                                    "filename": "zk_barter_v1.cairo"
+                                                },
+                                                "start_col": 6,
+                                                "start_line": 107
+                                            },
+                                            "While constructing the external wrapper for:"
+                                        ],
+                                        "start_col": 136,
+                                        "start_line": 1
+                                    },
+                                    "While expanding the reference '__calldata_arg_new_implementation' in:"
+                                ],
+                                "start_col": 3,
+                                "start_line": 111
+                            },
+                            "While handling calldata argument 'new_implementation'"
+                        ],
+                        "start_col": 41,
+                        "start_line": 1
+                    }
+                },
+                "313": {
+                    "accessible_scopes": [
+                        "__main__",
+                        "__main__",
+                        "__wrappers__",
+                        "__wrappers__.upgrade"
+                    ],
+                    "flow_tracking_data": null,
+                    "hints": [],
+                    "inst": {
+                        "end_col": 13,
+                        "end_line": 107,
+                        "input_file": {
+                            "filename": "zk_barter_v1.cairo"
+                        },
+                        "start_col": 6,
+                        "start_line": 107
+                    }
+                },
+                "315": {
+                    "accessible_scopes": [
+                        "__main__",
+                        "__main__",
+                        "__wrappers__",
+                        "__wrappers__.upgrade"
+                    ],
+                    "flow_tracking_data": null,
+                    "hints": [
+                        {
+                            "location": {
+                                "end_col": 34,
+                                "end_line": 2,
+                                "input_file": {
+                                    "filename": "autogen/starknet/external/upgrade/01cf0eb538193ad2725822cc1375c42d175a091c20039abd588f161b164243da.cairo"
+                                },
+                                "parent_location": [
+                                    {
+                                        "end_col": 13,
+                                        "end_line": 107,
+                                        "input_file": {
+                                            "filename": "zk_barter_v1.cairo"
+                                        },
+                                        "start_col": 6,
+                                        "start_line": 107
+                                    },
+                                    "While constructing the external wrapper for:"
+                                ],
+                                "start_col": 1,
+                                "start_line": 2
+                            },
+                            "n_prefix_newlines": 0
+                        }
+                    ],
+                    "inst": {
+                        "end_col": 24,
+                        "end_line": 3,
+                        "input_file": {
+                            "filename": "autogen/starknet/external/upgrade/01cf0eb538193ad2725822cc1375c42d175a091c20039abd588f161b164243da.cairo"
+                        },
+                        "parent_location": [
+                            {
+                                "end_col": 13,
+                                "end_line": 107,
+                                "input_file": {
+                                    "filename": "zk_barter_v1.cairo"
+                                },
+                                "start_col": 6,
+                                "start_line": 107
+                            },
+                            "While constructing the external wrapper for:"
+                        ],
+                        "start_col": 1,
+                        "start_line": 3
+                    }
+                },
+                "317": {
+                    "accessible_scopes": [
+                        "__main__",
+                        "__main__",
+                        "__wrappers__",
+                        "__wrappers__.upgrade"
+                    ],
+                    "flow_tracking_data": null,
+                    "hints": [],
+                    "inst": {
+                        "end_col": 55,
+                        "end_line": 1,
+                        "input_file": {
+                            "filename": "autogen/starknet/external/upgrade/01cf0eb538193ad2725822cc1375c42d175a091c20039abd588f161b164243da.cairo"
+                        },
+                        "parent_location": [
+                            {
+                                "end_col": 13,
+                                "end_line": 107,
+                                "input_file": {
+                                    "filename": "zk_barter_v1.cairo"
+                                },
+                                "parent_location": [
+                                    {
+                                        "end_col": 20,
+                                        "end_line": 1,
+                                        "input_file": {
+                                            "filename": "autogen/starknet/external/upgrade/4ba2b119ceb30fe10f4cca3c9d73ef620c0fb5eece91b99a99d71217bba1001c.cairo"
+                                        },
+                                        "parent_location": [
+                                            {
+                                                "end_col": 13,
+                                                "end_line": 107,
+                                                "input_file": {
+                                                    "filename": "zk_barter_v1.cairo"
+                                                },
+                                                "start_col": 6,
+                                                "start_line": 107
+                                            },
+                                            "While constructing the external wrapper for:"
+                                        ],
+                                        "start_col": 9,
+                                        "start_line": 1
+                                    },
+                                    "While expanding the reference 'syscall_ptr' in:"
+                                ],
+                                "start_col": 6,
+                                "start_line": 107
+                            },
+                            "While constructing the external wrapper for:"
+                        ],
+                        "start_col": 44,
+                        "start_line": 1
+                    }
+                },
+                "318": {
+                    "accessible_scopes": [
+                        "__main__",
+                        "__main__",
+                        "__wrappers__",
+                        "__wrappers__.upgrade"
+                    ],
+                    "flow_tracking_data": null,
+                    "hints": [],
+                    "inst": {
+                        "end_col": 82,
+                        "end_line": 1,
+                        "input_file": {
+                            "filename": "autogen/starknet/external/upgrade/01cf0eb538193ad2725822cc1375c42d175a091c20039abd588f161b164243da.cairo"
+                        },
+                        "parent_location": [
+                            {
+                                "end_col": 13,
+                                "end_line": 107,
+                                "input_file": {
+                                    "filename": "zk_barter_v1.cairo"
+                                },
+                                "parent_location": [
+                                    {
+                                        "end_col": 33,
+                                        "end_line": 1,
+                                        "input_file": {
+                                            "filename": "autogen/starknet/external/upgrade/4ba2b119ceb30fe10f4cca3c9d73ef620c0fb5eece91b99a99d71217bba1001c.cairo"
+                                        },
+                                        "parent_location": [
+                                            {
+                                                "end_col": 13,
+                                                "end_line": 107,
+                                                "input_file": {
+                                                    "filename": "zk_barter_v1.cairo"
+                                                },
+                                                "start_col": 6,
+                                                "start_line": 107
+                                            },
+                                            "While constructing the external wrapper for:"
+                                        ],
+                                        "start_col": 21,
+                                        "start_line": 1
+                                    },
+                                    "While expanding the reference 'pedersen_ptr' in:"
+                                ],
+                                "start_col": 6,
+                                "start_line": 107
+                            },
+                            "While constructing the external wrapper for:"
+                        ],
+                        "start_col": 70,
+                        "start_line": 1
+                    }
+                },
+                "319": {
+                    "accessible_scopes": [
+                        "__main__",
+                        "__main__",
+                        "__wrappers__",
+                        "__wrappers__.upgrade"
+                    ],
+                    "flow_tracking_data": null,
+                    "hints": [],
+                    "inst": {
+                        "end_col": 115,
+                        "end_line": 1,
+                        "input_file": {
+                            "filename": "autogen/starknet/external/upgrade/01cf0eb538193ad2725822cc1375c42d175a091c20039abd588f161b164243da.cairo"
+                        },
+                        "parent_location": [
+                            {
+                                "end_col": 13,
+                                "end_line": 107,
+                                "input_file": {
+                                    "filename": "zk_barter_v1.cairo"
+                                },
+                                "parent_location": [
+                                    {
+                                        "end_col": 49,
+                                        "end_line": 1,
+                                        "input_file": {
+                                            "filename": "autogen/starknet/external/upgrade/4ba2b119ceb30fe10f4cca3c9d73ef620c0fb5eece91b99a99d71217bba1001c.cairo"
+                                        },
+                                        "parent_location": [
+                                            {
+                                                "end_col": 13,
+                                                "end_line": 107,
+                                                "input_file": {
+                                                    "filename": "zk_barter_v1.cairo"
+                                                },
+                                                "start_col": 6,
+                                                "start_line": 107
+                                            },
+                                            "While constructing the external wrapper for:"
+                                        ],
+                                        "start_col": 34,
+                                        "start_line": 1
+                                    },
+                                    "While expanding the reference 'range_check_ptr' in:"
+                                ],
+                                "start_col": 6,
+                                "start_line": 107
+                            },
+                            "While constructing the external wrapper for:"
+                        ],
+                        "start_col": 100,
+                        "start_line": 1
+                    }
+                },
+                "320": {
+                    "accessible_scopes": [
+                        "__main__",
+                        "__main__",
+                        "__wrappers__",
+                        "__wrappers__.upgrade"
+                    ],
+                    "flow_tracking_data": null,
+                    "hints": [],
+                    "inst": {
+                        "end_col": 21,
+                        "end_line": 4,
+                        "input_file": {
+                            "filename": "autogen/starknet/external/upgrade/01cf0eb538193ad2725822cc1375c42d175a091c20039abd588f161b164243da.cairo"
+                        },
+                        "parent_location": [
+                            {
+                                "end_col": 13,
+                                "end_line": 107,
+                                "input_file": {
+                                    "filename": "zk_barter_v1.cairo"
+                                },
+                                "parent_location": [
+                                    {
+                                        "end_col": 62,
+                                        "end_line": 1,
+                                        "input_file": {
+                                            "filename": "autogen/starknet/external/upgrade/4ba2b119ceb30fe10f4cca3c9d73ef620c0fb5eece91b99a99d71217bba1001c.cairo"
+                                        },
+                                        "parent_location": [
+                                            {
+                                                "end_col": 13,
+                                                "end_line": 107,
+                                                "input_file": {
+                                                    "filename": "zk_barter_v1.cairo"
+                                                },
+                                                "start_col": 6,
+                                                "start_line": 107
+                                            },
+                                            "While constructing the external wrapper for:"
+                                        ],
+                                        "start_col": 50,
+                                        "start_line": 1
+                                    },
+                                    "While expanding the reference 'retdata_size' in:"
+                                ],
+                                "start_col": 6,
+                                "start_line": 107
+                            },
+                            "While constructing the external wrapper for:"
+                        ],
+                        "start_col": 20,
+                        "start_line": 4
+                    }
+                },
+                "322": {
+                    "accessible_scopes": [
+                        "__main__",
+                        "__main__",
+                        "__wrappers__",
+                        "__wrappers__.upgrade"
+                    ],
+                    "flow_tracking_data": null,
+                    "hints": [],
+                    "inst": {
+                        "end_col": 16,
+                        "end_line": 3,
+                        "input_file": {
+                            "filename": "autogen/starknet/external/upgrade/01cf0eb538193ad2725822cc1375c42d175a091c20039abd588f161b164243da.cairo"
+                        },
+                        "parent_location": [
+                            {
+                                "end_col": 13,
+                                "end_line": 107,
+                                "input_file": {
+                                    "filename": "zk_barter_v1.cairo"
+                                },
+                                "parent_location": [
+                                    {
+                                        "end_col": 70,
+                                        "end_line": 1,
+                                        "input_file": {
+                                            "filename": "autogen/starknet/external/upgrade/4ba2b119ceb30fe10f4cca3c9d73ef620c0fb5eece91b99a99d71217bba1001c.cairo"
+                                        },
+                                        "parent_location": [
+                                            {
+                                                "end_col": 13,
+                                                "end_line": 107,
+                                                "input_file": {
+                                                    "filename": "zk_barter_v1.cairo"
+                                                },
+                                                "start_col": 6,
+                                                "start_line": 107
+                                            },
+                                            "While constructing the external wrapper for:"
+                                        ],
+                                        "start_col": 63,
+                                        "start_line": 1
+                                    },
+                                    "While expanding the reference 'retdata' in:"
+                                ],
+                                "start_col": 6,
+                                "start_line": 107
+                            },
+                            "While constructing the external wrapper for:"
+                        ],
+                        "start_col": 9,
+                        "start_line": 3
+                    }
+                },
+                "323": {
+                    "accessible_scopes": [
+                        "__main__",
+                        "__main__",
+                        "__wrappers__",
+                        "__wrappers__.upgrade"
+                    ],
+                    "flow_tracking_data": null,
+                    "hints": [],
+                    "inst": {
+                        "end_col": 71,
+                        "end_line": 1,
+                        "input_file": {
+                            "filename": "autogen/starknet/external/upgrade/4ba2b119ceb30fe10f4cca3c9d73ef620c0fb5eece91b99a99d71217bba1001c.cairo"
+                        },
+                        "parent_location": [
+                            {
+                                "end_col": 13,
+                                "end_line": 107,
+                                "input_file": {
+                                    "filename": "zk_barter_v1.cairo"
+                                },
+                                "start_col": 6,
+                                "start_line": 107
+                            },
+                            "While constructing the external wrapper for:"
+                        ],
+                        "start_col": 1,
+                        "start_line": 1
+                    }
+                },
+                "324": {
+                    "accessible_scopes": [
+                        "__main__",
+                        "__main__",
+                        "__main__.set_admin"
+                    ],
+                    "flow_tracking_data": null,
+                    "hints": [],
+                    "inst": {
+                        "end_col": 23,
+                        "end_line": 123,
+                        "input_file": {
+                            "filename": "zk_barter_v1.cairo"
+                        },
+                        "parent_location": [
+                            {
+                                "end_col": 31,
+                                "end_line": 64,
+                                "input_file": {
+                                    "filename": "/Users/victorwu/cairo/zkBarter/contracts/libraries/Proxy.cairo"
+                                },
+                                "parent_location": [
+                                    {
+                                        "end_col": 30,
+                                        "end_line": 127,
+                                        "input_file": {
+                                            "filename": "zk_barter_v1.cairo"
+                                        },
+                                        "start_col": 5,
+                                        "start_line": 127
+                                    },
+                                    "While trying to retrieve the implicit argument 'syscall_ptr' in:"
+                                ],
+                                "start_col": 13,
+                                "start_line": 64
+                            },
+                            "While expanding the reference 'syscall_ptr' in:"
+                        ],
+                        "start_col": 5,
+                        "start_line": 123
+                    }
+                },
+                "325": {
+                    "accessible_scopes": [
+                        "__main__",
+                        "__main__",
+                        "__main__.set_admin"
+                    ],
+                    "flow_tracking_data": null,
+                    "hints": [],
+                    "inst": {
+                        "end_col": 31,
+                        "end_line": 124,
+                        "input_file": {
+                            "filename": "zk_barter_v1.cairo"
+                        },
+                        "parent_location": [
+                            {
+                                "end_col": 39,
+                                "end_line": 65,
+                                "input_file": {
+                                    "filename": "/Users/victorwu/cairo/zkBarter/contracts/libraries/Proxy.cairo"
+                                },
+                                "parent_location": [
+                                    {
+                                        "end_col": 30,
+                                        "end_line": 127,
+                                        "input_file": {
+                                            "filename": "zk_barter_v1.cairo"
+                                        },
+                                        "start_col": 5,
+                                        "start_line": 127
+                                    },
+                                    "While trying to retrieve the implicit argument 'pedersen_ptr' in:"
+                                ],
+                                "start_col": 13,
+                                "start_line": 65
+                            },
+                            "While expanding the reference 'pedersen_ptr' in:"
+                        ],
+                        "start_col": 5,
+                        "start_line": 124
+                    }
+                },
+                "326": {
+                    "accessible_scopes": [
+                        "__main__",
+                        "__main__",
+                        "__main__.set_admin"
+                    ],
+                    "flow_tracking_data": null,
+                    "hints": [],
+                    "inst": {
+                        "end_col": 20,
+                        "end_line": 125,
+                        "input_file": {
+                            "filename": "zk_barter_v1.cairo"
+                        },
+                        "parent_location": [
+                            {
+                                "end_col": 28,
+                                "end_line": 66,
+                                "input_file": {
+                                    "filename": "/Users/victorwu/cairo/zkBarter/contracts/libraries/Proxy.cairo"
+                                },
+                                "parent_location": [
+                                    {
+                                        "end_col": 30,
+                                        "end_line": 127,
+                                        "input_file": {
+                                            "filename": "zk_barter_v1.cairo"
+                                        },
+                                        "start_col": 5,
+                                        "start_line": 127
+                                    },
+                                    "While trying to retrieve the implicit argument 'range_check_ptr' in:"
+                                ],
+                                "start_col": 13,
+                                "start_line": 66
+                            },
+                            "While expanding the reference 'range_check_ptr' in:"
+                        ],
+                        "start_col": 5,
+                        "start_line": 125
+                    }
+                },
+                "327": {
+                    "accessible_scopes": [
+                        "__main__",
+                        "__main__",
+                        "__main__.set_admin"
+                    ],
+                    "flow_tracking_data": null,
+                    "hints": [],
+                    "inst": {
+                        "end_col": 30,
+                        "end_line": 127,
+                        "input_file": {
+                            "filename": "zk_barter_v1.cairo"
+                        },
+                        "start_col": 5,
+                        "start_line": 127
+                    }
+                },
+                "329": {
+                    "accessible_scopes": [
+                        "__main__",
+                        "__main__",
+                        "__main__.set_admin"
+                    ],
+                    "flow_tracking_data": null,
+                    "hints": [],
+                    "inst": {
+                        "end_col": 19,
+                        "end_line": 126,
+                        "input_file": {
+                            "filename": "zk_barter_v1.cairo"
+                        },
+                        "parent_location": [
+                            {
+                                "end_col": 41,
+                                "end_line": 128,
+                                "input_file": {
+                                    "filename": "zk_barter_v1.cairo"
+                                },
+                                "start_col": 32,
+                                "start_line": 128
+                            },
+                            "While expanding the reference 'new_admin' in:"
+                        ],
+                        "start_col": 3,
+                        "start_line": 126
+                    }
+                },
+                "330": {
+                    "accessible_scopes": [
+                        "__main__",
+                        "__main__",
+                        "__main__.set_admin"
+                    ],
+                    "flow_tracking_data": null,
+                    "hints": [],
+                    "inst": {
+                        "end_col": 42,
+                        "end_line": 128,
+                        "input_file": {
+                            "filename": "zk_barter_v1.cairo"
+                        },
+                        "start_col": 5,
+                        "start_line": 128
+                    }
+                },
+                "332": {
+                    "accessible_scopes": [
+                        "__main__",
+                        "__main__",
+                        "__main__.set_admin"
+                    ],
+                    "flow_tracking_data": null,
+                    "hints": [],
+                    "inst": {
+                        "end_col": 13,
+                        "end_line": 129,
+                        "input_file": {
+                            "filename": "zk_barter_v1.cairo"
+                        },
+                        "start_col": 5,
+                        "start_line": 129
+                    }
+                },
+                "333": {
+                    "accessible_scopes": [
+                        "__main__",
+                        "__main__",
+                        "__wrappers__",
+                        "__wrappers__.set_admin"
+                    ],
+                    "flow_tracking_data": null,
+                    "hints": [],
+                    "inst": {
+                        "end_col": 40,
+                        "end_line": 2,
+                        "input_file": {
+                            "filename": "autogen/starknet/arg_processor/6ec556b31d9c211d68293c75604d777ca365755e18089820ae024f49713ec319.cairo"
+                        },
+                        "parent_location": [
+                            {
+                                "end_col": 19,
+                                "end_line": 126,
+                                "input_file": {
+                                    "filename": "zk_barter_v1.cairo"
+                                },
+                                "parent_location": [
+                                    {
+                                        "end_col": 45,
+                                        "end_line": 1,
+                                        "input_file": {
+                                            "filename": "autogen/starknet/arg_processor/5e1cc73f0b484f90bb02da164d88332b40c6f698801aa4d3c603dab22157e902.cairo"
+                                        },
+                                        "parent_location": [
+                                            {
+                                                "end_col": 15,
+                                                "end_line": 122,
+                                                "input_file": {
+                                                    "filename": "zk_barter_v1.cairo"
+                                                },
+                                                "parent_location": [
+                                                    {
+                                                        "end_col": 57,
+                                                        "end_line": 1,
+                                                        "input_file": {
+                                                            "filename": "autogen/starknet/arg_processor/1b562308a65653425ce06491fa4b4539466f3251a07e73e099d0afe86a48900e.cairo"
+                                                        },
+                                                        "parent_location": [
+                                                            {
+                                                                "end_col": 15,
+                                                                "end_line": 122,
+                                                                "input_file": {
+                                                                    "filename": "zk_barter_v1.cairo"
+                                                                },
+                                                                "start_col": 6,
+                                                                "start_line": 122
+                                                            },
+                                                            "While handling calldata of"
+                                                        ],
+                                                        "start_col": 35,
+                                                        "start_line": 1
+                                                    },
+                                                    "While expanding the reference '__calldata_actual_size' in:"
+                                                ],
+                                                "start_col": 6,
+                                                "start_line": 122
+                                            },
+                                            "While handling calldata of"
+                                        ],
+                                        "start_col": 31,
+                                        "start_line": 1
+                                    },
+                                    "While expanding the reference '__calldata_ptr' in:"
+                                ],
+                                "start_col": 3,
+                                "start_line": 126
+                            },
                             "While handling calldata argument 'new_admin'"
                         ],
                         "start_col": 22,
@@ -10386,12 +10417,12 @@
                         "parent_location": [
                             {
                                 "end_col": 15,
-                                "end_line": 107,
+                                "end_line": 122,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
                                 "start_col": 6,
-                                "start_line": 107
+                                "start_line": 122
                             },
                             "While handling calldata of"
                         ],
@@ -10417,7 +10448,7 @@
                         "parent_location": [
                             {
                                 "end_col": 23,
-                                "end_line": 108,
+                                "end_line": 123,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
@@ -10431,12 +10462,12 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 15,
-                                                "end_line": 107,
+                                                "end_line": 122,
                                                 "input_file": {
                                                     "filename": "zk_barter_v1.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 107
+                                                "start_line": 122
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -10446,7 +10477,7 @@
                                     "While expanding the reference 'syscall_ptr' in:"
                                 ],
                                 "start_col": 5,
-                                "start_line": 108
+                                "start_line": 123
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -10472,7 +10503,7 @@
                         "parent_location": [
                             {
                                 "end_col": 31,
-                                "end_line": 109,
+                                "end_line": 124,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
@@ -10486,12 +10517,12 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 15,
-                                                "end_line": 107,
+                                                "end_line": 122,
                                                 "input_file": {
                                                     "filename": "zk_barter_v1.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 107
+                                                "start_line": 122
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -10501,7 +10532,7 @@
                                     "While expanding the reference 'pedersen_ptr' in:"
                                 ],
                                 "start_col": 5,
-                                "start_line": 109
+                                "start_line": 124
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -10527,7 +10558,7 @@
                         "parent_location": [
                             {
                                 "end_col": 20,
-                                "end_line": 110,
+                                "end_line": 125,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
@@ -10541,12 +10572,12 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 15,
-                                                "end_line": 107,
+                                                "end_line": 122,
                                                 "input_file": {
                                                     "filename": "zk_barter_v1.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 107
+                                                "start_line": 122
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -10556,7 +10587,7 @@
                                     "While expanding the reference 'range_check_ptr' in:"
                                 ],
                                 "start_col": 5,
-                                "start_line": 110
+                                "start_line": 125
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -10582,7 +10613,7 @@
                         "parent_location": [
                             {
                                 "end_col": 19,
-                                "end_line": 111,
+                                "end_line": 126,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
@@ -10596,12 +10627,12 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 15,
-                                                "end_line": 107,
+                                                "end_line": 122,
                                                 "input_file": {
                                                     "filename": "zk_barter_v1.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 107
+                                                "start_line": 122
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -10611,7 +10642,7 @@
                                     "While expanding the reference '__calldata_arg_new_admin' in:"
                                 ],
                                 "start_col": 3,
-                                "start_line": 111
+                                "start_line": 126
                             },
                             "While handling calldata argument 'new_admin'"
                         ],
@@ -10630,12 +10661,12 @@
                     "hints": [],
                     "inst": {
                         "end_col": 15,
-                        "end_line": 107,
+                        "end_line": 122,
                         "input_file": {
                             "filename": "zk_barter_v1.cairo"
                         },
                         "start_col": 6,
-                        "start_line": 107
+                        "start_line": 122
                     }
                 },
                 "342": {
@@ -10657,12 +10688,12 @@
                                 "parent_location": [
                                     {
                                         "end_col": 15,
-                                        "end_line": 107,
+                                        "end_line": 122,
                                         "input_file": {
                                             "filename": "zk_barter_v1.cairo"
                                         },
                                         "start_col": 6,
-                                        "start_line": 107
+                                        "start_line": 122
                                     },
                                     "While constructing the external wrapper for:"
                                 ],
@@ -10681,12 +10712,12 @@
                         "parent_location": [
                             {
                                 "end_col": 15,
-                                "end_line": 107,
+                                "end_line": 122,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
                                 "start_col": 6,
-                                "start_line": 107
+                                "start_line": 122
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -10712,7 +10743,7 @@
                         "parent_location": [
                             {
                                 "end_col": 15,
-                                "end_line": 107,
+                                "end_line": 122,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
@@ -10726,12 +10757,12 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 15,
-                                                "end_line": 107,
+                                                "end_line": 122,
                                                 "input_file": {
                                                     "filename": "zk_barter_v1.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 107
+                                                "start_line": 122
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -10741,7 +10772,7 @@
                                     "While expanding the reference 'syscall_ptr' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 107
+                                "start_line": 122
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -10767,7 +10798,7 @@
                         "parent_location": [
                             {
                                 "end_col": 15,
-                                "end_line": 107,
+                                "end_line": 122,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
@@ -10781,12 +10812,12 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 15,
-                                                "end_line": 107,
+                                                "end_line": 122,
                                                 "input_file": {
                                                     "filename": "zk_barter_v1.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 107
+                                                "start_line": 122
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -10796,7 +10827,7 @@
                                     "While expanding the reference 'pedersen_ptr' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 107
+                                "start_line": 122
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -10822,7 +10853,7 @@
                         "parent_location": [
                             {
                                 "end_col": 15,
-                                "end_line": 107,
+                                "end_line": 122,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
@@ -10836,12 +10867,12 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 15,
-                                                "end_line": 107,
+                                                "end_line": 122,
                                                 "input_file": {
                                                     "filename": "zk_barter_v1.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 107
+                                                "start_line": 122
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -10851,7 +10882,7 @@
                                     "While expanding the reference 'range_check_ptr' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 107
+                                "start_line": 122
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -10877,7 +10908,7 @@
                         "parent_location": [
                             {
                                 "end_col": 15,
-                                "end_line": 107,
+                                "end_line": 122,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
@@ -10891,12 +10922,12 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 15,
-                                                "end_line": 107,
+                                                "end_line": 122,
                                                 "input_file": {
                                                     "filename": "zk_barter_v1.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 107
+                                                "start_line": 122
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -10906,7 +10937,7 @@
                                     "While expanding the reference 'retdata_size' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 107
+                                "start_line": 122
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -10932,7 +10963,7 @@
                         "parent_location": [
                             {
                                 "end_col": 15,
-                                "end_line": 107,
+                                "end_line": 122,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
@@ -10946,12 +10977,12 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 15,
-                                                "end_line": 107,
+                                                "end_line": 122,
                                                 "input_file": {
                                                     "filename": "zk_barter_v1.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 107
+                                                "start_line": 122
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -10961,7 +10992,7 @@
                                     "While expanding the reference 'retdata' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 107
+                                "start_line": 122
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -10987,12 +11018,12 @@
                         "parent_location": [
                             {
                                 "end_col": 15,
-                                "end_line": 107,
+                                "end_line": 122,
                                 "input_file": {
                                     "filename": "zk_barter_v1.cairo"
                                 },
                                 "start_col": 6,
-                                "start_line": 107
+                                "start_line": 122
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -11244,6 +11275,45 @@
                 },
                 "size": 5,
                 "type": "struct"
+            },
+            "__main__.TradeRequestOpened": {
+                "type": "namespace"
+            },
+            "__main__.TradeRequestOpened.Args": {
+                "full_name": "__main__.TradeRequestOpened.Args",
+                "members": {},
+                "size": 0,
+                "type": "struct"
+            },
+            "__main__.TradeRequestOpened.ImplicitArgs": {
+                "full_name": "__main__.TradeRequestOpened.ImplicitArgs",
+                "members": {},
+                "size": 0,
+                "type": "struct"
+            },
+            "__main__.TradeRequestOpened.Return": {
+                "cairo_type": "()",
+                "type": "type_definition"
+            },
+            "__main__.TradeRequestOpened.SELECTOR": {
+                "type": "const",
+                "value": 1639077859591701349329917373917771809738207159868954724914912419109065042157
+            },
+            "__main__.TradeRequestOpened.SIZEOF_LOCALS": {
+                "type": "const",
+                "value": 0
+            },
+            "__main__.TradeRequestOpened.alloc": {
+                "destination": "starkware.cairo.common.alloc.alloc",
+                "type": "alias"
+            },
+            "__main__.TradeRequestOpened.emit_event": {
+                "destination": "starkware.starknet.common.syscalls.emit_event",
+                "type": "alias"
+            },
+            "__main__.TradeRequestOpened.memcpy": {
+                "destination": "starkware.cairo.common.memcpy.memcpy",
+                "type": "alias"
             },
             "__main__.initializer": {
                 "decorators": [
