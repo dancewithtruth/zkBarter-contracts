@@ -1,7 +1,8 @@
 %lang starknet
 
 from starkware.cairo.common.cairo_builtins import HashBuiltin
-from starkware.starknet.common.syscalls import library_call
+from starkware.starknet.common.syscalls import library_call, get_caller_address
+from starkware.cairo.common.uint256 import Uint256
 
 from interfaces.IERC721 import IERC721
 from libraries.Ownable import Ownable
@@ -12,13 +13,15 @@ from libraries.Proxy import Proxy
 #
 
 @event
-func TradeRequestOpened(
+func trade_request_opened(
     id : felt,
     token_a_owner : felt,
     token_a_address : felt,
     token_b_address : felt,
-    token_a_id : felt,
-    token_b_id : felt,
+    token_a_id_low : felt,
+    token_a_id_high : felt,
+    token_b_id_low : felt,
+    token_b_id_high : felt,
 ):
 end
 
@@ -30,8 +33,8 @@ struct TradeRequest:
     member token_a_owner : felt
     member token_a_address : felt
     member token_b_address : felt
-    member token_a_id : felt
-    member token_b_id : felt
+    member token_a_id : Uint256
+    member token_b_id : Uint256
 end
 
 struct StatusEnum:
@@ -83,18 +86,40 @@ func open_trade_request{
 }(
     token_a_address : felt,
     token_b_address : felt,
-    token_a_id : felt,
-    token_b_id : felt
+    token_a_id : Uint256,
+    token_b_id : Uint256
 ) -> ():
-    #Check for approval
-
     #Check for ownership
+    let (caller) = get_caller_address()
+    let (owner) = IERC721.ownerOf(contract_address=token_a_address, tokenId=token_a_id)
+    with_attr error_message("Requestor is not the owner of ERC721 token for trade"):
+        assert caller = owner
+    end
 
-    #Read current trade request ID and create new one with id+1 
+    #Create new trade request with status OPEN
+    let (current_id) = trade_requests_num.read()
+    tempvar new_id = current_id + 1
+    tempvar tr : TradeRequest = TradeRequest(
+        token_a_owner=caller,
+        token_a_address=token_a_address,
+        token_b_address=token_b_address,
+        token_a_id=token_a_id,
+        token_b_id=token_b_id
+    )
+    trade_requests.write(trade_request_id=new_id, value=tr)
+    trade_request_statuses.write(trade_request_id=new_id, value=StatusEnum.OPEN)
+    trade_requests_num.write(value=new_id)
 
-    #Set trade request id with status of OPEN in trade_request_statuses mapping
-
-    #Emit TradeRequestOpened event with relevant info
+    trade_request_opened.emit(
+        id=new_id,
+        token_a_owner=caller,
+        token_a_address=token_a_address,
+        token_b_address=token_b_address,
+        token_a_id_low=token_a_id.low,
+        token_a_id_high=token_a_id.high,
+        token_b_id_low=token_b_id.low,
+        token_b_id_high=token_b_id.high
+    )
 
     return()
 end

@@ -1,5 +1,22 @@
 [
     {
+        "members": [
+            {
+                "name": "low",
+                "offset": 0,
+                "type": "felt"
+            },
+            {
+                "name": "high",
+                "offset": 1,
+                "type": "felt"
+            }
+        ],
+        "name": "Uint256",
+        "size": 2,
+        "type": "struct"
+    },
+    {
         "data": [
             {
                 "name": "previousOwner",
@@ -59,16 +76,24 @@
                 "type": "felt"
             },
             {
-                "name": "token_a_id",
+                "name": "token_a_id_low",
                 "type": "felt"
             },
             {
-                "name": "token_b_id",
+                "name": "token_a_id_high",
+                "type": "felt"
+            },
+            {
+                "name": "token_b_id_low",
+                "type": "felt"
+            },
+            {
+                "name": "token_b_id_high",
                 "type": "felt"
             }
         ],
         "keys": [],
-        "name": "TradeRequestOpened",
+        "name": "trade_request_opened",
         "type": "event"
     },
     {
@@ -94,11 +119,11 @@
             },
             {
                 "name": "token_a_id",
-                "type": "felt"
+                "type": "Uint256"
             },
             {
                 "name": "token_b_id",
-                "type": "felt"
+                "type": "Uint256"
             }
         ],
         "name": "open_trade_request",
