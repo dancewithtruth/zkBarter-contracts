@@ -54,6 +54,29 @@
     {
         "inputs": [
             {
+                "name": "token_a_address",
+                "type": "felt"
+            },
+            {
+                "name": "token_b_address",
+                "type": "felt"
+            },
+            {
+                "name": "token_a_id",
+                "type": "felt"
+            },
+            {
+                "name": "token_b_id",
+                "type": "felt"
+            }
+        ],
+        "name": "open_trade_request",
+        "outputs": [],
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
                 "name": "new_implementation",
                 "type": "felt"
             }
@@ -69,7 +92,7 @@
                 "type": "felt"
             }
         ],
-        "name": "setAdmin",
+        "name": "set_admin",
         "outputs": [],
         "type": "function"
     }
