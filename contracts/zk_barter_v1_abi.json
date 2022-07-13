@@ -108,6 +108,17 @@
         "type": "event"
     },
     {
+        "data": [
+            {
+                "name": "id",
+                "type": "felt"
+            }
+        ],
+        "keys": [],
+        "name": "trade_request_matched",
+        "type": "event"
+    },
+    {
         "inputs": [
             {
                 "name": "proxy_admin",
@@ -154,6 +165,17 @@
             }
         ],
         "name": "cancel_trade_request",
+        "outputs": [],
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "name": "trade_request_id",
+                "type": "felt"
+            }
+        ],
+        "name": "match_trade_request",
         "outputs": [],
         "type": "function"
     },

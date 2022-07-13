@@ -26,9 +26,11 @@ func trade_request_opened(
 end
 
 @event
-func trade_request_cancelled(
-    id : felt
-):
+func trade_request_cancelled(id : felt):
+end
+
+@event
+func trade_request_matched(id : felt):
 end
 
 #
@@ -150,6 +152,51 @@ func cancel_trade_request{
     trade_request_statuses.write(trade_request_id=trade_request_id, value=StatusEnum.CANCELLED)
     trade_request_cancelled.emit(id=trade_request_id)
     return()
+end
+
+# Matches against an open trade request
+@external
+func match_trade_request{
+    syscall_ptr: felt*,
+    pedersen_ptr: HashBuiltin*,
+    range_check_ptr
+}(
+    trade_request_id
+) -> ():
+    #Check that trade request is open
+    let (trade_request) = trade_requests.read(trade_request_id=trade_request_id)
+    let (trade_request_status) = trade_request_statuses.read(trade_request_id=trade_request_id)
+    with_attr error_message("Trade request is no longer valid"):
+        assert trade_request_status = StatusEnum.OPEN
+    end    
+
+    #Check for ownership
+    let (caller) = get_caller_address()
+    let (owner) = IERC721.ownerOf(contract_address=trade_request.token_b_address, tokenId=trade_request.token_b_id)
+    with_attr error_message("Matcher is not the owner of ERC721 token for trade"):
+        assert caller = owner
+    end
+
+    #Swap NFTs
+    IERC721.transferFrom(
+        contract_address=trade_request.token_a_address,
+        from_=trade_request.token_a_owner,
+        to=caller,
+        tokenId=trade_request.token_a_id
+    )
+    IERC721.transferFrom(
+        contract_address=trade_request.token_b_address,
+        from_=caller,
+        to=trade_request.token_a_owner,
+        tokenId=trade_request.token_b_id
+    )
+
+    #Update trade request status to MATCHED
+    trade_request_statuses.write(trade_request_id=trade_request_id, value=StatusEnum.MATCHED)
+    trade_request_matched.emit(
+        id=trade_request_id
+    )
+    return ()
 end
 
 #
