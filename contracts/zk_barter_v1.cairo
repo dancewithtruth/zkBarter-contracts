@@ -94,7 +94,7 @@ func open_trade_request{
     token_b_address : felt,
     token_a_id : Uint256,
     token_b_id : Uint256
-) -> ():
+) -> (trade_request_id : felt):
     #Check for ownership
     let (caller) = get_caller_address()
     let (owner) = IERC721.ownerOf(contract_address=token_a_address, tokenId=token_a_id)
@@ -127,7 +127,7 @@ func open_trade_request{
         token_b_id_high=token_b_id.high
     )
 
-    return()
+    return (trade_request_id=new_id)
 end
 
 # Cancels an open trade request
@@ -137,9 +137,15 @@ func cancel_trade_request{
     pedersen_ptr: HashBuiltin*,
     range_check_ptr
 }(trade_request_id : felt) -> ():
-    let (res) = trade_request_statuses.read(trade_request_id=trade_request_id)
-    with_attr error_message("Trade request is not in OPEN status or trade request does not exist"):
-        assert res = StatusEnum.OPEN
+    #Check if trade request was opened by caller
+    let (caller) = get_caller_address()
+    let (trade_request) = trade_requests.read(trade_request_id=trade_request_id)
+    with_attr error_message("Cannot cancel a trade request that does not exist or does not belong to caller"):
+        assert caller = trade_request.token_a_owner
+    end
+    let (trade_request_status) = trade_request_statuses.read(trade_request_id=trade_request_id)
+    with_attr error_message("Trade request is not in OPEN status"):
+        assert trade_request_status = StatusEnum.OPEN
     end
     trade_request_statuses.write(trade_request_id=trade_request_id, value=StatusEnum.CANCELLED)
     trade_request_cancelled.emit(id=trade_request_id)
