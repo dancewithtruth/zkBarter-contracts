@@ -38,30 +38,73 @@ namespace IERC721:
 end
 
 @contract_interface
-namespace zkBarterContract:
+namespace IBarterContract:
     func open_trade_request(
         token_a_address : felt,
         token_b_address : felt,
         token_a_id : Uint256,
         token_b_id : Uint256
-    ):
+    ) -> (trade_request_id : felt):
+    end
+
+    func match_trade_request(trade_request_id : felt):
     end
 end
 
 @external
-func test_proxy_contract{syscall_ptr : felt*, range_check_ptr}():
+func test_open_trade_request{syscall_ptr : felt*, range_check_ptr}():
     alloc_locals
     local token_a_address : felt
+    local token_b_address : felt
+    local zk_barter_address : felt
     # We deploy contract and put its address into a local variable. Second argument is calldata array
     %{ 
-        ids.token_a_address = deploy_contract("./lib/cairo_contracts/src/openzeppelin/token/erc721/ERC721_Mintable_Burnable.cairo", [1, 1, 123]).contract_address
-        stop_prank_callable = start_prank(123, ids.token_a_address)
+        ids.token_a_address = deploy_contract("./lib/cairo_contracts/src/openzeppelin/token/erc721/ERC721_Mintable_Burnable.cairo", [1, 1, 111]).contract_address
+        ids.token_b_address = deploy_contract("./lib/cairo_contracts/src/openzeppelin/token/erc721/ERC721_Mintable_Burnable.cairo", [1, 1, 222]).contract_address
+        stop_prank_callable_a = start_prank(111, ids.token_a_address)
+        stop_prank_callable_b = start_prank(222, ids.token_b_address)
         print(ids.token_a_address)
+        print(ids.token_b_address)
     %}
     tempvar tokenIdA : Uint256 = Uint256(low=0, high=0)
-    IERC721.mint(contract_address=token_a_address,to=123, tokenId=tokenIdA)
-    let (owner) = IERC721.ownerOf(contract_address=token_a_address, tokenId=tokenIdA)
-    assert owner = 123
-    %{ stop_prank_callable() %}
+    tempvar tokenIdB : Uint256 = Uint256(low=0, high=0)
+    IERC721.mint(contract_address=token_a_address,to=111, tokenId=tokenIdA)
+    IERC721.mint(contract_address=token_b_address,to=222, tokenId=tokenIdB)
+    let (owner_a) = IERC721.ownerOf(contract_address=token_a_address, tokenId=tokenIdA)
+    let (owner_b) = IERC721.ownerOf(contract_address=token_b_address, tokenId=tokenIdB)
+    assert owner_a = 111
+    assert owner_b = 222
+
+    %{ 
+        ids.zk_barter_address = deploy_contract("./src/zk_barter_v1.cairo", []).contract_address
+        print(ids.zk_barter_address)
+    %}
+
+    IERC721.setApprovalForAll(contract_address=token_a_address, operator=zk_barter_address, approved=1)
+    IERC721.setApprovalForAll(contract_address=token_b_address, operator=zk_barter_address, approved=1)
+
+    # User A opens trade request with User B
+    %{ stop_zk_barter_callable = start_prank(111, ids.zk_barter_address)%}
+    let (trade_request_id : felt) = IBarterContract.open_trade_request(
+        contract_address=zk_barter_address,
+        token_a_address=token_a_address,
+        token_b_address=token_b_address,
+        token_a_id=tokenIdA,
+        token_b_id=tokenIdB
+    )
+    %{ stop_zk_barter_callable() %}
+
+    # User B matches User A's trade request
+    %{ stop_zk_barter_callable = start_prank(222, ids.zk_barter_address)%}
+    IBarterContract.match_trade_request(contract_address=zk_barter_address, trade_request_id=trade_request_id)
+    %{ stop_zk_barter_callable() %}
+
+    let (owner_a) = IERC721.ownerOf(contract_address=token_a_address, tokenId=tokenIdA)
+    let (owner_b) = IERC721.ownerOf(contract_address=token_b_address, tokenId=tokenIdB)
+    assert owner_a = 222
+    assert owner_b = 111
+
+    %{ stop_prank_callable_a() %}
+    %{ stop_prank_callable_b() %}
     return()
 end
