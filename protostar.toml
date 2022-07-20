@@ -2,9 +2,9 @@
 protostar_version = "0.2.6"
 
 ["protostar.project"]
-libs_path = "contracts"
+libs_path = "./lib"
 
 ["protostar.contracts"]
 zk_barter_v1 = [
-    "contracts/zk_barter_v1.cairo",
+    "./src/zk_barter_v1.cairo",
 ]
