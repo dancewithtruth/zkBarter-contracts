@@ -1,0 +1,10 @@
+["protostar.config"]
+protostar_version = "0.2.6"
+
+["protostar.project"]
+libs_path = "contracts"
+
+["protostar.contracts"]
+zk_barter_v1 = [
+    "contracts/zk_barter_v1.cairo",
+]
