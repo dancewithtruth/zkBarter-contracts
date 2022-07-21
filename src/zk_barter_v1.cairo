@@ -199,6 +199,26 @@ func match_trade_request{
     return ()
 end
 
+@external
+func get_trade_request{
+    syscall_ptr: felt*,
+    pedersen_ptr: HashBuiltin*,
+    range_check_ptr    
+    }(trade_request_id : felt) -> (res : TradeRequest):
+    let (trade_request) = trade_requests.read(trade_request_id=trade_request_id)
+    return (res=trade_request)
+end
+
+@external
+func get_trade_request_status{
+    syscall_ptr: felt*,
+    pedersen_ptr: HashBuiltin*,
+    range_check_ptr 
+    }(trade_request_id : felt) -> (res : felt):
+    let (status) = trade_request_statuses.read(trade_request_id=trade_request_id)
+    return (res=status)
+end
+
 #
 # Upgrades
 #
