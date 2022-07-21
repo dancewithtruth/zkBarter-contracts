@@ -1,5 +1,6 @@
 %lang starknet
 from starkware.cairo.common.uint256 import Uint256
+from src.zk_barter_v1 import StatusEnum
 
 @contract_interface
 namespace IERC721:
@@ -49,6 +50,9 @@ namespace IBarterContract:
 
     func match_trade_request(trade_request_id : felt):
     end
+
+    func get_trade_request_status(trade_request_id : felt) -> (res : felt):
+    end
 end
 
 @external
@@ -92,6 +96,13 @@ func test_open_trade_request{syscall_ptr : felt*, range_check_ptr}():
         token_a_id=tokenIdA,
         token_b_id=tokenIdB
     )
+
+    # Check to see if trade request status is OPEN (0)
+    let (trade_request_status : felt) = IBarterContract.get_trade_request_status(
+        contract_address=zk_barter_address,
+        trade_request_id=trade_request_id
+    )
+    assert trade_request_status = StatusEnum.OPEN
     %{ stop_zk_barter_callable() %}
 
     # User B matches User A's trade request
