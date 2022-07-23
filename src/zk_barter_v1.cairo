@@ -1,9 +1,15 @@
 %lang starknet
-
-from starkware.cairo.common.cairo_builtins import HashBuiltin
-from starkware.starknet.common.syscalls import library_call, get_caller_address
+from starkware.cairo.common.cairo_builtins import (
+    HashBuiltin, 
+    BitwiseBuiltin
+)
+from starkware.starknet.common.syscalls import (
+    library_call, 
+    get_caller_address,
+)
+from starkware.cairo.common.alloc import alloc
 from starkware.cairo.common.uint256 import Uint256
-
+from starkware.cairo.common.cairo_keccak.keccak import keccak_felts, finalize_keccak
 from cairo_contracts.src.openzeppelin.token.erc721.interfaces.IERC721 import IERC721
 from cairo_contracts.src.openzeppelin.access.ownable import Ownable
 from cairo_contracts.src.openzeppelin.upgrades.library import Proxy
@@ -14,7 +20,7 @@ from cairo_contracts.src.openzeppelin.upgrades.library import Proxy
 
 @event
 func trade_request_opened(
-    id : felt,
+    id : Uint256,
     token_a_owner : felt,
     token_a_address : felt,
     token_b_address : felt,
@@ -26,11 +32,11 @@ func trade_request_opened(
 end
 
 @event
-func trade_request_cancelled(id : felt):
+func trade_request_closed(id : Uint256):
 end
 
 @event
-func trade_request_matched(id : felt):
+func trade_request_matched(id : Uint256):
 end
 
 #
@@ -46,8 +52,8 @@ struct TradeRequest:
 end
 
 struct StatusEnum:
+    member CLOSED : felt
     member OPEN : felt
-    member CANCELLED : felt
     member MATCHED : felt
 end
 
@@ -56,15 +62,11 @@ end
 #
 
 @storage_var
-func trade_requests_num() -> (res : felt):
+func trade_requests(trade_request_id : Uint256) -> (res : TradeRequest):
 end
 
 @storage_var
-func trade_requests(trade_request_id : felt) -> (res : TradeRequest):
-end
-
-@storage_var
-func trade_request_statuses(trade_request_id : felt) -> (res : felt):
+func trade_request_statuses(trade_request_id : Uint256) -> (res : felt):
 end
 
 #
@@ -90,36 +92,54 @@ end
 func open_trade_request{
     syscall_ptr: felt*,
     pedersen_ptr: HashBuiltin*,
+    bitwise_ptr : BitwiseBuiltin*,
     range_check_ptr
 }(
     token_a_address : felt,
     token_b_address : felt,
     token_a_id : Uint256,
     token_b_id : Uint256
-) -> (trade_request_id : felt):
+) -> (trade_request_id : Uint256):
+    alloc_locals
     #Check for ownership
     let (caller) = get_caller_address()
     let (owner) = IERC721.ownerOf(contract_address=token_a_address, tokenId=token_a_id)
-    with_attr error_message("Requestor is not the owner of ERC721 token for trade"):
+    with_attr error_message("Requestor does not own the ERC721 token for trade"):
         assert caller = owner
     end
 
-    #Create new trade request with status OPEN
-    let (current_id) = trade_requests_num.read()
-    tempvar new_id = current_id + 1
-    tempvar tr : TradeRequest = TradeRequest(
+    #Get the trade request id for a given payload
+    let (payload : felt*) = alloc()
+    assert payload[0] = owner
+    assert payload[1] = token_a_address
+    assert payload[2] = token_b_address
+    assert payload[3] = token_a_id.low
+    assert payload[4] = token_a_id.high
+    assert payload[5] = token_b_id.low
+    assert payload[6] = token_b_id.high
+    let (trade_request_id) = _get_trade_request_id(n_elements=7, elements=payload)
+
+    #Check if trade request is already open...might not need this functionality
+    let (trade_request_status) = trade_request_statuses.read(trade_request_id=trade_request_id)
+    if trade_request_status == StatusEnum.OPEN:
+        with_attr error_message("Trade request already exists"):
+            assert 1 = 0
+        end
+    end
+    
+    #Open a new trade request
+    local tr : TradeRequest = TradeRequest(
         token_a_owner=caller,
         token_a_address=token_a_address,
         token_b_address=token_b_address,
         token_a_id=token_a_id,
         token_b_id=token_b_id
     )
-    trade_requests.write(trade_request_id=new_id, value=tr)
-    trade_request_statuses.write(trade_request_id=new_id, value=StatusEnum.OPEN)
-    trade_requests_num.write(value=new_id)
+    trade_requests.write(trade_request_id=trade_request_id, value=tr)
+    trade_request_statuses.write(trade_request_id=trade_request_id, value=StatusEnum.OPEN)
 
     trade_request_opened.emit(
-        id=new_id,
+        id=trade_request_id,
         token_a_owner=caller,
         token_a_address=token_a_address,
         token_b_address=token_b_address,
@@ -129,28 +149,28 @@ func open_trade_request{
         token_b_id_high=token_b_id.high
     )
 
-    return (trade_request_id=new_id)
+    return (trade_request_id=trade_request_id)
 end
 
-# Cancels an open trade request
+# Closes an open trade request
 @external
-func cancel_trade_request{
+func close_trade_request{
     syscall_ptr: felt*,
     pedersen_ptr: HashBuiltin*,
     range_check_ptr
-}(trade_request_id : felt) -> ():
+}(trade_request_id : Uint256) -> ():
     #Check if trade request was opened by caller
     let (caller) = get_caller_address()
     let (trade_request) = trade_requests.read(trade_request_id=trade_request_id)
-    with_attr error_message("Cannot cancel a trade request that does not exist or does not belong to caller"):
+    with_attr error_message("Cannot close a trade request that does not exist or does not belong to caller"):
         assert caller = trade_request.token_a_owner
     end
     let (trade_request_status) = trade_request_statuses.read(trade_request_id=trade_request_id)
     with_attr error_message("Trade request is not in OPEN status"):
         assert trade_request_status = StatusEnum.OPEN
     end
-    trade_request_statuses.write(trade_request_id=trade_request_id, value=StatusEnum.CANCELLED)
-    trade_request_cancelled.emit(id=trade_request_id)
+    trade_request_statuses.write(trade_request_id=trade_request_id, value=StatusEnum.CLOSED)
+    trade_request_closed.emit(id=trade_request_id)
     return()
 end
 
@@ -161,7 +181,7 @@ func match_trade_request{
     pedersen_ptr: HashBuiltin*,
     range_check_ptr
 }(
-    trade_request_id
+    trade_request_id : Uint256
 ) -> ():
     #Check that trade request is open
     let (trade_request) = trade_requests.read(trade_request_id=trade_request_id)
@@ -204,7 +224,7 @@ func get_trade_request{
     syscall_ptr: felt*,
     pedersen_ptr: HashBuiltin*,
     range_check_ptr    
-    }(trade_request_id : felt) -> (res : TradeRequest):
+    }(trade_request_id : Uint256) -> (res : TradeRequest):
     let (trade_request) = trade_requests.read(trade_request_id=trade_request_id)
     return (res=trade_request)
 end
@@ -214,7 +234,7 @@ func get_trade_request_status{
     syscall_ptr: felt*,
     pedersen_ptr: HashBuiltin*,
     range_check_ptr 
-    }(trade_request_id : felt) -> (res : felt):
+    }(trade_request_id : Uint256) -> (res : felt):
     let (status) = trade_request_statuses.read(trade_request_id=trade_request_id)
     return (res=status)
 end
@@ -247,4 +267,23 @@ func set_admin{
     Proxy.assert_only_admin()
     Proxy._set_admin(new_admin=new_admin)
     return()
+end
+
+#
+# Internal
+#
+
+func _get_trade_request_id{
+    syscall_ptr : felt*, 
+    pedersen_ptr : HashBuiltin*, 
+    bitwise_ptr : BitwiseBuiltin*, 
+    range_check_ptr
+}(n_elements : felt, elements : felt*) -> (res : Uint256):
+    #https://github.com/starkware-libs/cairo-lang/blob/master/src/starkware/cairo/common/cairo_keccak/keccak.cairo
+    alloc_locals
+    let (keccak_ptr : felt*) = alloc()
+    local keccak_ptr_start : felt* = keccak_ptr
+    let (keccak_hash) = keccak_felts{keccak_ptr=keccak_ptr}(n_elements=n_elements, elements=elements)
+    finalize_keccak(keccak_ptr_start=keccak_ptr_start, keccak_ptr_end=keccak_ptr)
+    return (res=keccak_hash)
 end
