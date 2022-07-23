@@ -45,13 +45,13 @@ namespace IBarterContract:
         token_b_address : felt,
         token_a_id : Uint256,
         token_b_id : Uint256
-    ) -> (trade_request_id : felt):
+    ) -> (trade_request_id : Uint256):
     end
 
-    func match_trade_request(trade_request_id : felt):
+    func match_trade_request(trade_request_id : Uint256):
     end
 
-    func get_trade_request_status(trade_request_id : felt) -> (res : felt):
+    func get_trade_request_status(trade_request_id : Uint256) -> (res : felt):
     end
 end
 
@@ -89,7 +89,7 @@ func test_open_trade_request{syscall_ptr : felt*, range_check_ptr}():
 
     # User A opens trade request with User B
     %{ stop_zk_barter_callable = start_prank(111, ids.zk_barter_address)%}
-    let (trade_request_id : felt) = IBarterContract.open_trade_request(
+    let (trade_request_id : Uint256) = IBarterContract.open_trade_request(
         contract_address=zk_barter_address,
         token_a_address=token_a_address,
         token_b_address=token_b_address,
