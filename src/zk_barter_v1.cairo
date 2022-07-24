@@ -9,8 +9,9 @@ from starkware.cairo.common.cairo_builtins import (
     HashBuiltin,
 )
 from starkware.cairo.common.cairo_keccak.keccak import keccak_felts, finalize_keccak
-from starkware.cairo.common.math import assert_nn
+from starkware.cairo.common.math import assert_le
 from starkware.starknet.common.syscalls import (
+    get_block_timestamp,
     get_caller_address,
     library_call, 
 )
@@ -31,6 +32,7 @@ func trade_request_opened(
     token_a_id_high : felt,
     token_b_id_low : felt,
     token_b_id_high : felt,
+    expiration: felt,
 ):
 end
 
@@ -59,6 +61,7 @@ struct TradeRequest:
     member token_b_address : felt
     member token_a_id : Uint256
     member token_b_id : Uint256
+    member expiration : felt
 end
 
 struct StatusEnum:
@@ -102,7 +105,7 @@ end
 # External functions
 #
 
-#Opens a 1:1 NFT trade request. The requestor must own Token A to initiate a trade request.
+#Opens a 1:1 NFT trade request. The requestor must own Token A to initiate a trade request. Set expiration to 0 for no expiration date.
 @external
 func open_trade_request{
     syscall_ptr: felt*,
@@ -114,7 +117,8 @@ func open_trade_request{
     token_b_address : felt,
     token_a_id : Uint256,
     token_b_id : Uint256,
-    isPrivate : felt
+    isPrivate : felt,
+    expiration : felt
 ) -> (trade_request_id : Uint256):
     alloc_locals
 
@@ -151,11 +155,14 @@ func open_trade_request{
     assert payload[7] = token_b_id.high
     let (trade_request_id) = _get_trade_request_id(n_elements=8, elements=payload)
 
-    #Check if trade request is already open...might not need this functionality
+    #Check if non-expired trade request is already open
     let (trade_request_status) = trade_request_statuses.read(trade_request_id=trade_request_id)
+    let (trade_request) = trade_requests.read(trade_request_id=trade_request_id)
     if trade_request_status == StatusEnum.OPEN:
-        with_attr error_message("Trade request already exists"):
-            assert 1 = 0
+        if trade_request.expiration != 0:
+            with_attr error_message("Trade request already exists"):
+                assert 1 = 0
+            end
         end
     end
     
@@ -166,7 +173,8 @@ func open_trade_request{
         token_a_address=token_a_address,
         token_b_address=token_b_address,
         token_a_id=token_a_id,
-        token_b_id=token_b_id
+        token_b_id=token_b_id,
+        expiration=expiration
     )
     trade_requests.write(trade_request_id=trade_request_id, value=tr)
     trade_request_statuses.write(trade_request_id=trade_request_id, value=StatusEnum.OPEN)
@@ -180,7 +188,8 @@ func open_trade_request{
         token_a_id_low=token_a_id.low,
         token_a_id_high=token_a_id.high,
         token_b_id_low=token_b_id.low,
-        token_b_id_high=token_b_id.high
+        token_b_id_high=token_b_id.high,
+        expiration=expiration
     )
 
     return (trade_request_id=trade_request_id)
@@ -217,13 +226,27 @@ func match_trade_request{
 }(
     trade_request_id : Uint256
 ) -> ():
+    alloc_locals
     _assert_trading_is_live()
     #Check that trade request is open
     let (trade_request) = trade_requests.read(trade_request_id=trade_request_id)
     let (trade_request_status) = trade_request_statuses.read(trade_request_id=trade_request_id)
     with_attr error_message("Trade request is no longer valid"):
         assert trade_request_status = StatusEnum.OPEN
-    end    
+    end
+
+    #Check trade request is not expired
+    let (timestamp) = get_block_timestamp()
+    if trade_request.expiration != 0:
+        with_attr error_message("Trade request is expired"):
+            assert_le(trade_request.expiration, timestamp)
+        end
+        tempvar syscall_ptr = syscall_ptr
+        tempvar range_check_ptr = range_check_ptr
+    else:
+        tempvar syscall_ptr = syscall_ptr
+        tempvar range_check_ptr = range_check_ptr
+    end
 
     #Check for ownership
     let (caller) = get_caller_address()

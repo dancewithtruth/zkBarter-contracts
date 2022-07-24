@@ -42,13 +42,14 @@ end
 namespace IBarterContract:
     func initializer(proxy_admin : felt):
     end
-    
+
     func open_trade_request(
         token_a_address : felt,
         token_b_address : felt,
         token_a_id : Uint256,
         token_b_id : Uint256,
-        isPrivate : felt
+        isPrivate : felt,
+        expiration : felt,
     ) -> (trade_request_id : Uint256):
     end
 
@@ -104,7 +105,8 @@ func test_open_trade_request{syscall_ptr : felt*, range_check_ptr}():
         token_b_address=token_b_address,
         token_a_id=tokenIdA,
         token_b_id=tokenIdB,
-        isPrivate=1
+        isPrivate=1,
+        expiration=0
     )
 
     # Check to see if trade request status is OPEN (0)
