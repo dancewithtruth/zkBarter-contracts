@@ -44,7 +44,8 @@ namespace IBarterContract:
         token_a_address : felt,
         token_b_address : felt,
         token_a_id : Uint256,
-        token_b_id : Uint256
+        token_b_id : Uint256,
+        isPrivate : felt
     ) -> (trade_request_id : Uint256):
     end
 
@@ -94,7 +95,8 @@ func test_open_trade_request{syscall_ptr : felt*, range_check_ptr}():
         token_a_address=token_a_address,
         token_b_address=token_b_address,
         token_a_id=tokenIdA,
-        token_b_id=tokenIdB
+        token_b_id=tokenIdB,
+        isPrivate=1
     )
 
     # Check to see if trade request status is OPEN (0)

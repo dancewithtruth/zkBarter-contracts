@@ -7,8 +7,10 @@ from starkware.starknet.common.syscalls import (
     library_call, 
     get_caller_address,
 )
+from starkware.cairo.common.bool import TRUE, FALSE
 from starkware.cairo.common.alloc import alloc
 from starkware.cairo.common.uint256 import Uint256
+from starkware.cairo.common.math import assert_nn
 from starkware.cairo.common.cairo_keccak.keccak import keccak_felts, finalize_keccak
 from cairo_contracts.src.openzeppelin.token.erc721.interfaces.IERC721 import IERC721
 from cairo_contracts.src.openzeppelin.access.ownable import Ownable
@@ -21,7 +23,8 @@ from cairo_contracts.src.openzeppelin.upgrades.library import Proxy
 @event
 func trade_request_opened(
     id : Uint256,
-    token_a_owner : felt,
+    requestor_address : felt,
+    requestee_address : felt,
     token_a_address : felt,
     token_b_address : felt,
     token_a_id_low : felt,
@@ -40,11 +43,18 @@ func trade_request_matched(id : Uint256):
 end
 
 #
+# Consts
+#
+
+const DEFAULT_REQUESTEE_ADDRESS = 0
+
+#
 # Structs
 #
 
 struct TradeRequest:
-    member token_a_owner : felt
+    member requestor_address : felt
+    member requestee_address : felt
     member token_a_address : felt
     member token_b_address : felt
     member token_a_id : Uint256
@@ -70,7 +80,7 @@ func trade_request_statuses(trade_request_id : Uint256) -> (res : felt):
 end
 
 #
-# Intializer (to be called once from a proxy delegate call)
+# Intializer (to be called once from a proxy delegate contract)
 #
 
 @external
@@ -87,7 +97,7 @@ end
 # External functions
 #
 
-#To open a trade request, the requestor must own token A and have it be approved
+#Opens a 1:1 NFT trade request. The requestor must own Token A to initiate a trade request.
 @external
 func open_trade_request{
     syscall_ptr: felt*,
@@ -98,26 +108,43 @@ func open_trade_request{
     token_a_address : felt,
     token_b_address : felt,
     token_a_id : Uint256,
-    token_b_id : Uint256
+    token_b_id : Uint256,
+    isPrivate : felt
 ) -> (trade_request_id : Uint256):
     alloc_locals
+
     #Check for ownership
     let (caller) = get_caller_address()
-    let (owner) = IERC721.ownerOf(contract_address=token_a_address, tokenId=token_a_id)
+    let (owner_of_token_a) = IERC721.ownerOf(contract_address=token_a_address, tokenId=token_a_id)
     with_attr error_message("Requestor does not own the ERC721 token for trade"):
-        assert caller = owner
+        assert caller = owner_of_token_a
+    end
+
+    #Set requestee address to owner of token B if trade request is private. If public, set to 0 (anyone address holding token B can execute match)
+    #https://www.cairo-lang.org/docs/how_cairo_works/builtins.html#revoked-implicit-arguments
+    local requestee_address
+    if isPrivate == TRUE:
+        let (owner_of_token_b) = IERC721.ownerOf(contract_address=token_b_address, tokenId=token_b_id)
+        requestee_address = owner_of_token_b
+        tempvar syscall_ptr = syscall_ptr
+        tempvar range_check_ptr = range_check_ptr
+    else:
+        requestee_address = DEFAULT_REQUESTEE_ADDRESS
+        tempvar syscall_ptr = syscall_ptr
+        tempvar range_check_ptr = range_check_ptr
     end
 
     #Get the trade request id for a given payload
     let (payload : felt*) = alloc()
-    assert payload[0] = owner
-    assert payload[1] = token_a_address
-    assert payload[2] = token_b_address
-    assert payload[3] = token_a_id.low
-    assert payload[4] = token_a_id.high
-    assert payload[5] = token_b_id.low
-    assert payload[6] = token_b_id.high
-    let (trade_request_id) = _get_trade_request_id(n_elements=7, elements=payload)
+    assert payload[0] = caller
+    assert payload[1] = requestee_address
+    assert payload[2] = token_a_address
+    assert payload[3] = token_b_address
+    assert payload[4] = token_a_id.low
+    assert payload[5] = token_a_id.high
+    assert payload[6] = token_b_id.low
+    assert payload[7] = token_b_id.high
+    let (trade_request_id) = _get_trade_request_id(n_elements=8, elements=payload)
 
     #Check if trade request is already open...might not need this functionality
     let (trade_request_status) = trade_request_statuses.read(trade_request_id=trade_request_id)
@@ -129,7 +156,8 @@ func open_trade_request{
     
     #Open a new trade request
     local tr : TradeRequest = TradeRequest(
-        token_a_owner=caller,
+        requestor_address=caller,
+        requestee_address=requestee_address,
         token_a_address=token_a_address,
         token_b_address=token_b_address,
         token_a_id=token_a_id,
@@ -140,7 +168,8 @@ func open_trade_request{
 
     trade_request_opened.emit(
         id=trade_request_id,
-        token_a_owner=caller,
+        requestor_address=caller,
+        requestee_address=requestee_address,
         token_a_address=token_a_address,
         token_b_address=token_b_address,
         token_a_id_low=token_a_id.low,
@@ -163,7 +192,7 @@ func close_trade_request{
     let (caller) = get_caller_address()
     let (trade_request) = trade_requests.read(trade_request_id=trade_request_id)
     with_attr error_message("Cannot close a trade request that does not exist or does not belong to caller"):
-        assert caller = trade_request.token_a_owner
+        assert caller = trade_request.requestor_address
     end
     let (trade_request_status) = trade_request_statuses.read(trade_request_id=trade_request_id)
     with_attr error_message("Trade request is not in OPEN status"):
@@ -197,17 +226,25 @@ func match_trade_request{
         assert caller = owner
     end
 
+    #Enforce private trades
+    if trade_request.requestee_address == 0:
+        #Do nothing special
+    else:
+        #Ensure requestee address matches buyer
+        assert trade_request.requestee_address = caller
+    end
+
     #Swap NFTs
     IERC721.transferFrom(
         contract_address=trade_request.token_a_address,
-        from_=trade_request.token_a_owner,
+        from_=trade_request.requestor_address,
         to=caller,
         tokenId=trade_request.token_a_id
     )
     IERC721.transferFrom(
         contract_address=trade_request.token_b_address,
         from_=caller,
-        to=trade_request.token_a_owner,
+        to=trade_request.requestor_address,
         tokenId=trade_request.token_b_id
     )
 
