@@ -280,7 +280,7 @@ func get_trade_request_status{
 end
 
 @external
-func set_trading_is_live{
+func update_is_trading_live{
     syscall_ptr: felt*,
     pedersen_ptr: HashBuiltin*,
     range_check_ptr 
