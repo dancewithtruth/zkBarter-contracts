@@ -227,10 +227,7 @@ func match_trade_request{
     end
 
     #Enforce private trades
-    if trade_request.requestee_address == 0:
-        #Do nothing special
-    else:
-        #Ensure requestee address matches buyer
+    if trade_request.requestee_address != 0:
         assert trade_request.requestee_address = caller
     end
 
