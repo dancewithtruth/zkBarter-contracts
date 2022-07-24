@@ -40,6 +40,9 @@ end
 
 @contract_interface
 namespace IBarterContract:
+    func initializer(proxy_admin : felt):
+    end
+    
     func open_trade_request(
         token_a_address : felt,
         token_b_address : felt,
@@ -80,10 +83,15 @@ func test_open_trade_request{syscall_ptr : felt*, range_check_ptr}():
     assert owner_a = 111
     assert owner_b = 222
 
+    #Deploy and initialize zkBarter contract to start trading
     %{ 
         ids.zk_barter_address = deploy_contract("./src/zk_barter_v1.cairo", []).contract_address
         print(ids.zk_barter_address)
     %}
+    IBarterContract.initializer(
+        contract_address=zk_barter_address,
+        proxy_admin=111
+    )
 
     IERC721.setApprovalForAll(contract_address=token_a_address, operator=zk_barter_address, approved=1)
     IERC721.setApprovalForAll(contract_address=token_b_address, operator=zk_barter_address, approved=1)

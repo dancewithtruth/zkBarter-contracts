@@ -5,14 +5,14 @@ from cairo_contracts.src.openzeppelin.upgrades.library import Proxy
 from starkware.cairo.common.alloc import alloc
 from starkware.cairo.common.bool import TRUE, FALSE
 from starkware.cairo.common.cairo_builtins import (
-    HashBuiltin, 
-    BitwiseBuiltin
+    BitwiseBuiltin,
+    HashBuiltin,
 )
 from starkware.cairo.common.cairo_keccak.keccak import keccak_felts, finalize_keccak
 from starkware.cairo.common.math import assert_nn
 from starkware.starknet.common.syscalls import (
-    library_call, 
     get_caller_address,
+    library_call, 
 )
 from starkware.cairo.common.uint256 import Uint256
 
@@ -72,6 +72,10 @@ end
 #
 
 @storage_var
+func is_trading_live() -> (res : felt):
+end
+
+@storage_var
 func trade_requests(trade_request_id : Uint256) -> (res : TradeRequest):
 end
 
@@ -90,6 +94,7 @@ func initializer{
     range_check_ptr
 }(proxy_admin : felt):
     Proxy.initializer(proxy_admin=proxy_admin)
+    is_trading_live.write(value=TRUE)
     return ()
 end
 
@@ -212,6 +217,7 @@ func match_trade_request{
 }(
     trade_request_id : Uint256
 ) -> ():
+    _assert_trading_is_live()
     #Check that trade request is open
     let (trade_request) = trade_requests.read(trade_request_id=trade_request_id)
     let (trade_request_status) = trade_request_statuses.read(trade_request_id=trade_request_id)
@@ -273,6 +279,17 @@ func get_trade_request_status{
     return (res=status)
 end
 
+@external
+func set_trading_is_live{
+    syscall_ptr: felt*,
+    pedersen_ptr: HashBuiltin*,
+    range_check_ptr 
+    }(bool : felt):
+    Proxy.assert_only_admin()
+    is_trading_live.write(value=bool)
+    return ()
+end
+
 #
 # Upgrades
 #
@@ -320,4 +337,16 @@ func _get_trade_request_id{
     let (keccak_hash) = keccak_felts{keccak_ptr=keccak_ptr}(n_elements=n_elements, elements=elements)
     finalize_keccak(keccak_ptr_start=keccak_ptr_start, keccak_ptr_end=keccak_ptr)
     return (res=keccak_hash)
+end
+
+func _assert_trading_is_live{
+    syscall_ptr : felt*, 
+    pedersen_ptr : HashBuiltin*, 
+    range_check_ptr
+}():
+    let (res) = is_trading_live.read()
+    with_attr error_message("Trading is not live"):
+        assert res = TRUE
+    end
+    return ()
 end
