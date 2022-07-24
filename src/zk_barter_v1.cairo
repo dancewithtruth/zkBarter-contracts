@@ -28,10 +28,8 @@ func trade_request_opened(
     requestee_address : felt,
     token_a_address : felt,
     token_b_address : felt,
-    token_a_id_low : felt,
-    token_a_id_high : felt,
-    token_b_id_low : felt,
-    token_b_id_high : felt,
+    token_a_id: Uint256,
+    token_b_id: Uint256,
     expiration: felt,
 ):
 end
@@ -185,10 +183,8 @@ func open_trade_request{
         requestee_address=requestee_address,
         token_a_address=token_a_address,
         token_b_address=token_b_address,
-        token_a_id_low=token_a_id.low,
-        token_a_id_high=token_a_id.high,
-        token_b_id_low=token_b_id.low,
-        token_b_id_high=token_b_id.high,
+        token_a_id=token_a_id,
+        token_b_id=token_b_id,
         expiration=expiration
     )
 
