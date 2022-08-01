@@ -278,7 +278,7 @@ func match_trade_request{
     return ()
 end
 
-@external
+@view
 func get_trade_request{
     syscall_ptr: felt*,
     pedersen_ptr: HashBuiltin*,
@@ -288,7 +288,7 @@ func get_trade_request{
     return (res=trade_request)
 end
 
-@external
+@view
 func get_trade_request_status{
     syscall_ptr: felt*,
     pedersen_ptr: HashBuiltin*,
@@ -337,6 +337,16 @@ func set_admin{
     Proxy.assert_only_admin()
     Proxy._set_admin(new_admin=new_admin)
     return()
+end
+
+@view
+func get_admin{
+    syscall_ptr: felt*,
+    pedersen_ptr: HashBuiltin*,
+    range_check_ptr
+}() -> (res : felt):
+    let (res) = Proxy.get_admin()
+    return(res)
 end
 
 #
